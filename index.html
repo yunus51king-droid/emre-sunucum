@@ -1,348 +1,238 @@
-```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EMRE Sunucu Hizmetleri | TeamSpeak 3</title>
+
+<title>EMRE Sunucu Hizmetleri</title>
 
 <style>
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-    color: #fff;
     background:
-        radial-gradient(circle at 15% 20%, rgba(0, 180, 255, .16), transparent 30%),
-        radial-gradient(circle at 85% 80%, rgba(0, 255, 140, .12), transparent 30%),
-        linear-gradient(135deg, #02050b, #071321 50%, #02070b);
-    overflow-x: hidden;
-}
-
-/* Hareketli ışıklar */
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    width: 450px;
-    height: 450px;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: .16;
-    pointer-events: none;
-    animation: float 8s ease-in-out infinite alternate;
-}
-
-body::before {
-    background: #00aaff;
-    top: -150px;
-    left: -150px;
-}
-
-body::after {
-    background: #00ff88;
-    right: -150px;
-    bottom: -150px;
-    animation-delay: 2s;
-}
-
-@keyframes float {
-    from { transform: translate(0, 0); }
-    to { transform: translate(80px, 50px); }
+        radial-gradient(circle at top, #14213d 0%, #070b14 45%, #03050a 100%);
+    color: white;
+    min-height: 100vh;
 }
 
 .container {
-    width: min(1150px, 92%);
+    width: 92%;
+    max-width: 1150px;
     margin: auto;
-    padding: 45px 0 50px;
 }
 
-/* Üst alan */
-.hero {
+/* HEADER */
+
+header {
+    padding: 35px 0 20px;
     text-align: center;
-    margin-bottom: 35px;
 }
 
-.badge {
-    display: inline-block;
-    padding: 8px 18px;
-    border: 1px solid rgba(0, 210, 255, .4);
-    border-radius: 30px;
-    background: rgba(0, 170, 255, .08);
-    color: #65dfff;
-    font-size: 13px;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
-    box-shadow: 0 0 25px rgba(0, 180, 255, .15);
-}
-
-.hero h1 {
-    font-size: clamp(34px, 6vw, 68px);
+.logo {
+    font-size: 42px;
     font-weight: 900;
-    letter-spacing: 1px;
-    background: linear-gradient(90deg, #fff, #35d9ff, #55ffad, #fff);
-    background-size: 250%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 5s linear infinite;
+    letter-spacing: 2px;
+    color: #00eaff;
+    text-shadow:
+        0 0 10px #00eaff,
+        0 0 25px #008cff;
 }
 
-@keyframes shine {
-    from { background-position: 0%; }
-    to { background-position: 250%; }
-}
-
-.hero p {
-    margin-top: 12px;
-    color: #9fb1c5;
+.subtitle {
+    margin-top: 10px;
+    color: #a9b5c8;
     font-size: 16px;
 }
 
-/* Özellikler */
+/* HERO */
+
+.hero {
+    margin-top: 25px;
+    padding: 45px 25px;
+    border: 1px solid rgba(0,234,255,.25);
+    border-radius: 22px;
+    background: rgba(10,18,32,.75);
+    box-shadow: 0 0 35px rgba(0,174,255,.12);
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: #aeb9c9;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+/* BUTTONS */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.btn {
+    border: none;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.buy {
+    background: linear-gradient(135deg,#00c6ff,#0072ff);
+    box-shadow: 0 0 18px rgba(0,150,255,.35);
+}
+
+.support {
+    background: linear-gradient(135deg,#00c853,#009624);
+    box-shadow: 0 0 18px rgba(0,200,83,.25);
+}
+
+/* PACKAGES */
+
+.section-title {
+    text-align: center;
+    font-size: 28px;
+    margin: 50px 0 25px;
+}
+
+.packages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+    gap: 18px;
+}
+
+.card {
+    position: relative;
+    padding: 25px 20px;
+    border-radius: 18px;
+    background: linear-gradient(145deg,#101b30,#080d18);
+    border: 1px solid rgba(0,234,255,.18);
+    text-align: center;
+    transition: .3s;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #00eaff;
+    box-shadow: 0 0 25px rgba(0,234,255,.2);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: #00eaff;
+    transition: .5s;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.people {
+    color: #00eaff;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 30px;
+    font-weight: 900;
+    margin: 18px 0;
+}
+
+.price span {
+    font-size: 15px;
+    color: #9aa8bb;
+}
+
+.card button {
+    width: 100%;
+    border: none;
+    padding: 13px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(135deg,#008cff,#00c6ff);
+    transition: .25s;
+}
+
+.card button:hover {
+    transform: scale(1.04);
+}
+
+/* FEATURES */
+
 .features {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     gap: 15px;
-    margin: 30px 0;
+    margin-top: 25px;
 }
 
 .feature {
-    background: rgba(7, 20, 35, .75);
-    border: 1px solid rgba(0, 190, 255, .16);
-    border-radius: 16px;
-    padding: 18px;
+    padding: 22px;
+    border-radius: 15px;
+    background: rgba(14,24,42,.8);
+    border: 1px solid rgba(255,255,255,.06);
     text-align: center;
-    backdrop-filter: blur(10px);
-    transition: .3s;
-}
-
-.feature:hover {
-    transform: translateY(-5px);
-    border-color: rgba(0, 230, 180, .55);
-    box-shadow: 0 10px 35px rgba(0, 200, 255, .12);
-}
-
-.feature .icon {
-    font-size: 27px;
-    margin-bottom: 8px;
 }
 
 .feature strong {
     display: block;
-    font-size: 15px;
+    margin-bottom: 7px;
+    color: #00eaff;
 }
 
-.feature span {
-    color: #7e91a7;
-    font-size: 12px;
-}
+/* FOOTER */
 
-/* Başlık */
-.section-title {
-    text-align: center;
-    margin: 45px 0 22px;
-}
-
-.section-title h2 {
-    font-size: 28px;
-}
-
-.section-title p {
-    color: #71869c;
-    margin-top: 7px;
-}
-
-/* Paketler */
-.packages {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-}
-
-.package {
-    position: relative;
-    background: linear-gradient(180deg, rgba(12, 29, 48, .95), rgba(4, 13, 23, .95));
-    border: 1px solid rgba(0, 190, 255, .22);
-    border-radius: 20px;
-    padding: 25px 15px;
-    text-align: center;
-    overflow: hidden;
-    transition: .35s;
-}
-
-.package::before {
-    content: "";
-    position: absolute;
-    top: -100%;
-    left: -30%;
-    width: 160%;
-    height: 70%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(0, 220, 255, .16),
-        transparent
-    );
-    transform: rotate(-15deg);
-    transition: .6s;
-}
-
-.package:hover::before {
-    top: 120%;
-}
-
-.package:hover {
-    transform: translateY(-8px);
-    border-color: #18dfff;
-    box-shadow:
-        0 0 25px rgba(0, 200, 255, .18),
-        0 15px 40px rgba(0, 0, 0, .35);
-}
-
-.package.featured {
-    border-color: rgba(0, 255, 150, .55);
-    box-shadow: 0 0 25px rgba(0, 255, 150, .08);
-}
-
-.package .people {
-    color: #51dcff;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.package h3 {
-    margin: 12px 0 7px;
-    font-size: 22px;
-}
-
-.package .price {
-    font-size: 27px;
-    font-weight: 900;
-    color: #63ffb1;
-}
-
-.package .period {
-    color: #6d8196;
-    font-size: 11px;
-    margin-top: 5px;
-}
-
-/* Butonlar */
-.actions {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin: 38px 0;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    min-width: 210px;
-    padding: 15px 22px;
-    border-radius: 13px;
-    text-decoration: none;
-    color: white;
-    font-weight: 800;
-    font-size: 14px;
-    border: 1px solid rgba(255,255,255,.1);
-    transition: .3s;
-}
-
-.btn:hover {
-    transform: translateY(-4px);
-}
-
-.btn-buy {
-    background: linear-gradient(135deg, #008cff, #00c6ff);
-    box-shadow: 0 8px 30px rgba(0, 170, 255, .22);
-}
-
-.btn-connect {
-    background: linear-gradient(135deg, #00a96b, #00e58a);
-    box-shadow: 0 8px 30px rgba(0, 255, 150, .18);
-}
-
-.btn-support {
-    background: linear-gradient(135deg, #075e54, #10a87a);
-    box-shadow: 0 8px 30px rgba(0, 200, 140, .18);
-}
-
-/* TS3 bilgi */
-.servers {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    margin-top: 25px;
-}
-
-.server-card {
-    background: rgba(7, 19, 32, .8);
-    border: 1px solid rgba(0, 190, 255, .17);
-    border-radius: 18px;
-    padding: 22px;
-}
-
-.server-card h3 {
-    margin-bottom: 10px;
-}
-
-.server-address {
-    display: inline-block;
-    color: #55deff;
-    font-weight: bold;
-    background: rgba(0, 170, 255, .08);
-    border: 1px solid rgba(0, 190, 255, .15);
-    padding: 9px 13px;
-    border-radius: 9px;
-    margin-top: 5px;
-}
-
-/* Alt bilgi */
 footer {
     text-align: center;
-    margin-top: 45px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(255,255,255,.06);
-    color: #63778b;
-    font-size: 12px;
+    padding: 40px 0 25px;
+    color: #66758a;
+    font-size: 14px;
 }
 
-footer strong {
-    color: #35d9ff;
-}
+/* MOBILE */
 
-/* Mobil */
-@media (max-width: 900px) {
-    .packages {
-        grid-template-columns: repeat(2, 1fr);
+@media(max-width:600px) {
+    .logo {
+        font-size: 30px;
     }
 
-    .features {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 600px) {
-    .packages {
-        grid-template-columns: 1fr;
-    }
-
-    .servers {
-        grid-template-columns: 1fr;
-    }
-
-    .container {
-        padding-top: 25px;
+    .hero h1 {
+        font-size: 26px;
     }
 }
 </style>
@@ -352,133 +242,168 @@ footer strong {
 
 <div class="container">
 
-    <section class="hero">
-        <div class="badge">⚡ PROFESYONEL TEAMSPEAK 3 HİZMETLERİ</div>
+<header>
+    <div class="logo">EMRE SUNUCU HİZMETLERİ</div>
+    <div class="subtitle">
+        Güvenli • Performanslı • 7/24 Destek
+    </div>
+</header>
 
-        <h1>EMRE SUNUCU HİZMETLERİ</h1>
+<section class="hero">
 
-        <p>
-            Güvenli • Hızlı • Performanslı TeamSpeak 3 Sunucuları
-        </p>
-    </section>
+    <h1>⚡ TeamSpeak 3 Sunucuları</h1>
 
-    <section class="features">
+    <p>
+        İhtiyacınıza uygun TeamSpeak 3 sunucunuzu seçin.
+        Uygun fiyat, yüksek performans ve hızlı destek.
+    </p>
 
-        <div class="feature">
-            <div class="icon">🛡️</div>
-            <strong>Güvenli Altyapı</strong>
-            <span>Stabil ve güvenilir sunucular</span>
-        </div>
+    <div class="buttons">
 
-        <div class="feature">
-            <div class="icon">⚡</div>
-            <strong>Hızlı Kurulum</strong>
-            <span>Sunucunuz kısa sürede hazır</span>
-        </div>
-
-        <div class="feature">
-            <div class="icon">🎧</div>
-            <strong>Destek</strong>
-            <span>TS3 üzerinden bize ulaşabilirsiniz</span>
-        </div>
-
-    </section>
-
-    <section class="section-title">
-        <h2>💎 TEAM SPEAK 3 SUNUCU PAKETLERİ</h2>
-        <p>İhtiyacınıza uygun paketi seçin</p>
-    </section>
-
-    <section class="packages">
-
-        <div class="package">
-            <div class="people">👥 32 KİŞİ</div>
-            <h3>TS3</h3>
-            <div class="price">120 TL</div>
-            <div class="period">Sunucu Paketi</div>
-        </div>
-
-        <div class="package">
-            <div class="people">👥 64 KİŞİ</div>
-            <h3>TS3</h3>
-            <div class="price">150 TL</div>
-            <div class="period">Sunucu Paketi</div>
-        </div>
-
-        <div class="package">
-            <div class="people">👥 128 KİŞİ</div>
-            <h3>TS3</h3>
-            <div class="price">200 TL</div>
-            <div class="period">Sunucu Paketi</div>
-        </div>
-
-        <div class="package">
-            <div class="people">👥 512 KİŞİ</div>
-            <h3>TS3</h3>
-            <div class="price">240 TL</div>
-            <div class="period">Sunucu Paketi</div>
-        </div>
-
-        <div class="package featured">
-            <div class="people">👥 1024 KİŞİ</div>
-            <h3>TS3</h3>
-            <div class="price">300 TL</div>
-            <div class="period">Sunucu Paketi</div>
-        </div>
-
-    </section>
-
-    <section class="actions">
-
-        <!-- SATIN AL -->
-        <a class="btn btn-buy"
+        <a class="btn buy"
            href="https://wa.me/905305942151?text=Merhaba%2C%20TeamSpeak%203%20sunucusu%20sat%C4%B1n%20almak%20istiyorum."
            target="_blank">
-            🛒 TS3 SUNUCU SATIN AL
+           🛒 TS3 SUNUCU SATIN AL
         </a>
 
-        <!-- PROSUNUCUM TS3 -->
-        <a class="btn btn-connect"
-           href="ts3server://prosunucum">
-            🟢 TS3 SUNUCUSUNA BAĞLAN
-        </a>
-
-        <!-- DESTEK -->
-        <a class="btn btn-support"
+        <a class="btn support"
            href="https://wa.me/905305942151?text=Merhaba%2C%20destek%20almak%20istiyorum."
            target="_blank">
-            💬 DESTEK AL
+           💬 DESTEK AL
         </a>
 
-    </section>
+    </div>
 
-    <section class="section-title">
-        <h2>🎧 BİZE ULAŞIN</h2>
-        <p>Satış ve destek için TeamSpeak üzerinden de ulaşabilirsiniz.</p>
-    </section>
+</section>
 
-    <section class="servers">
 
-        <div class="server-card">
-            <h3>🟢 Satış Sunucumuz</h3>
-            <p>TeamSpeak 3 sunucularımız hakkında bilgi almak için:</p>
-            <div class="server-address">prosunucum</div>
+<h2 class="section-title">💎 TS3 SUNUCU PAKETLERİ</h2>
+
+<div class="packages">
+
+    <div class="card">
+        <h3>🟢 Başlangıç</h3>
+        <div class="people">32 Kişilik</div>
+
+        <div class="price">
+            120 <span>TL</span>
         </div>
 
-        <div class="server-card">
-            <h3>🎧 Genel Destek & İletişim</h3>
-            <p>Emre ve arkadaşlarımıza TeamSpeak üzerinden ulaşın:</p>
-            <div class="server-address">familiawt</div>
+        <button onclick="buy('32 Kişilik TS3 Sunucusu - 120 TL')">
+            🛒 SATIN AL
+        </button>
+    </div>
+
+
+    <div class="card">
+        <h3>🔵 Standart</h3>
+        <div class="people">64 Kişilik</div>
+
+        <div class="price">
+            150 <span>TL</span>
         </div>
 
-    </section>
+        <button onclick="buy('64 Kişilik TS3 Sunucusu - 150 TL')">
+            🛒 SATIN AL
+        </button>
+    </div>
 
-    <footer>
-        © 2026 <strong>EMRE SUNUCU HİZMETLERİ</strong> — TeamSpeak 3 Hizmetleri
-    </footer>
+
+    <div class="card">
+        <h3>🟣 Premium</h3>
+        <div class="people">128 Kişilik</div>
+
+        <div class="price">
+            200 <span>TL</span>
+        </div>
+
+        <button onclick="buy('128 Kişilik TS3 Sunucusu - 200 TL')">
+            🛒 SATIN AL
+        </button>
+    </div>
+
+
+    <div class="card">
+        <h3>🟠 Pro</h3>
+        <div class="people">512 Kişilik</div>
+
+        <div class="price">
+            240 <span>TL</span>
+        </div>
+
+        <button onclick="buy('512 Kişilik TS3 Sunucusu - 240 TL')">
+            🛒 SATIN AL
+        </button>
+    </div>
+
+
+    <div class="card">
+        <h3>🔴 Ultimate</h3>
+        <div class="people">1024 Kişilik</div>
+
+        <div class="price">
+            300 <span>TL</span>
+        </div>
+
+        <button onclick="buy('1024 Kişilik TS3 Sunucusu - 300 TL')">
+            🛒 SATIN AL
+        </button>
+    </div>
 
 </div>
 
+
+<h2 class="section-title">🚀 Neden EMRE Sunucu Hizmetleri?</h2>
+
+<div class="features">
+
+    <div class="feature">
+        <strong>🛡️ Güvenli</strong>
+        Güvenli sunucu altyapısı
+    </div>
+
+    <div class="feature">
+        <strong>⚡ Performans</strong>
+        Yüksek performanslı TS3
+    </div>
+
+    <div class="feature">
+        <strong>💬 Destek</strong>
+        Hızlı müşteri desteği
+    </div>
+
+    <div class="feature">
+        <strong>🔄 Stabil</strong>
+        Kesintisiz hizmet
+    </div>
+
+</div>
+
+
+<footer>
+    © 2026 EMRE Sunucu Hizmetleri
+</footer>
+
+</div>
+
+
+<script>
+
+function buy(packageName) {
+
+    const message =
+        "Merhaba, " +
+        packageName +
+        " satın almak istiyorum.";
+
+    const whatsapp =
+        "https://wa.me/905305942151?text=" +
+        encodeURIComponent(message);
+
+    window.open(whatsapp, "_blank");
+}
+
+</script>
+
 </body>
 </html>
-```
