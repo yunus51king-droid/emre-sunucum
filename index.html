@@ -3,769 +3,897 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BAYRAKSUNUCUM | Dijital Oyun Pazaryeri</title>
+<title>BAYRAKSUNUCUM - Dijital Pazaryeri</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root{
+    --blue:#246bce;
+    --dark:#182230;
+    --text:#263241;
+    --muted:#7a8797;
+    --border:#e5e9ef;
+    --bg:#f5f7fa;
+    --white:#fff;
+    --green:#16a36a;
+    --red:#e14d5d;
+    --shadow:0 4px 18px rgba(20,35,55,.06);
 }
 
-html{
-    scroll-behavior:smooth;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#070912;
-    color:#fff;
-    overflow-x:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
 }
 
-/* =========================
-   ARKA PLAN
-========================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-3;
-    background:
-        radial-gradient(circle at 15% 20%, rgba(0,110,255,.18), transparent 28%),
-        radial-gradient(circle at 85% 15%, rgba(125,50,255,.15), transparent 30%),
-        radial-gradient(circle at 50% 90%, rgba(0,200,255,.08), transparent 30%),
-        #070912;
+button,
+input,
+select{
+    font-family:inherit;
 }
 
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-2;
-    opacity:.18;
-    background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-    background-size:50px 50px;
-    pointer-events:none;
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
-.navbar{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    height:76px;
-    border-bottom:1px solid rgba(255,255,255,.07);
-    background:rgba(7,9,18,.82);
-    backdrop-filter:blur(18px);
-}
-
-.nav-inner{
-    width:min(1200px,92%);
-    height:100%;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-size:25px;
-    font-weight:900;
-    letter-spacing:-1px;
-    color:#fff;
-}
-
-.logo span{
-    color:#328cff;
-}
-
-.logo small{
-    display:block;
-    font-size:8px;
-    letter-spacing:3px;
-    color:#71809d;
-    margin-top:2px;
-}
-
-.nav-links{
-    display:flex;
-    gap:30px;
-    list-style:none;
-}
-
-.nav-links a{
-    color:#9ca7bd;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:600;
-    transition:.25s;
-}
-
-.nav-links a:hover{
-    color:#fff;
-}
-
-.nav-buttons{
-    display:flex;
-    gap:10px;
-}
-
-.btn-login,
-.btn-register{
-    padding:11px 18px;
-    border-radius:10px;
-    text-decoration:none;
-    font-size:13px;
-    font-weight:700;
-}
-
-.btn-login{
-    color:#fff;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.04);
-}
-
-.btn-register{
-    color:#fff;
-    background:linear-gradient(135deg,#176cff,#604cff);
-    box-shadow:0 0 25px rgba(50,110,255,.25);
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    width:min(1200px,92%);
-    margin:auto;
-    min-height:590px;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    align-items:center;
-    gap:50px;
-    padding:70px 0;
-}
-
-.hero-left{
-    position:relative;
-}
-
-.hero-badge{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:8px 13px;
-    border:1px solid rgba(71,139,255,.25);
-    background:rgba(36,104,255,.08);
-    color:#65a5ff;
-    border-radius:30px;
-    font-size:12px;
-    font-weight:700;
-    margin-bottom:25px;
-}
-
-.status-dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:#35e88b;
-    box-shadow:0 0 12px #35e88b;
-}
-
-.hero h1{
-    font-size:clamp(42px,5.5vw,76px);
-    line-height:.98;
-    letter-spacing:-4px;
-    margin-bottom:25px;
-}
-
-.hero h1 span{
-    color:#428dff;
-}
-
-.hero-text{
-    max-width:570px;
-    color:#8e9ab1;
-    font-size:16px;
-    line-height:1.8;
-    margin-bottom:32px;
-}
-
-.search{
-    max-width:600px;
-    height:62px;
-    display:flex;
-    align-items:center;
-    padding:7px;
-    background:rgba(255,255,255,.045);
-    border:1px solid rgba(255,255,255,.09);
-    border-radius:15px;
-    box-shadow:0 15px 50px rgba(0,0,0,.25);
-}
-
-.search-icon{
-    width:45px;
-    text-align:center;
-    font-size:20px;
-    color:#63718d;
-}
-
-.search input{
-    flex:1;
-    height:100%;
-    border:0;
-    outline:0;
-    background:transparent;
-    color:#fff;
-    font-size:14px;
-}
-
-.search input::placeholder{
-    color:#657189;
-}
-
-.search button{
-    height:48px;
-    padding:0 24px;
-    border:0;
-    border-radius:10px;
-    background:#287cff;
-    color:#fff;
-    font-weight:800;
+button{
     cursor:pointer;
 }
 
-.hero-stats{
-    display:flex;
-    gap:35px;
-    margin-top:35px;
-}
-
-.stat strong{
-    display:block;
-    font-size:20px;
-}
-
-.stat span{
-    display:block;
-    color:#65718a;
-    font-size:11px;
-    margin-top:5px;
-}
-
-/* =========================
-   HERO VISUAL
-========================= */
-
-.hero-right{
-    position:relative;
-    height:430px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.glow{
-    position:absolute;
-    width:330px;
-    height:330px;
-    background:#216cff;
-    filter:blur(100px);
-    opacity:.16;
-}
-
-.market-card{
-    position:relative;
-    width:390px;
-    border:1px solid rgba(255,255,255,.1);
-    background:linear-gradient(
-        145deg,
-        rgba(25,31,51,.95),
-        rgba(10,13,25,.96)
-    );
-    border-radius:25px;
-    padding:20px;
-    box-shadow:
-        0 40px 100px rgba(0,0,0,.5),
-        0 0 80px rgba(37,105,255,.12);
-    transform:rotate(2deg);
-}
-
-.card-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
-}
-
-.live{
-    color:#3ce890;
-    font-size:10px;
-    font-weight:800;
-}
-
-.card-image{
-    height:170px;
-    border-radius:16px;
-    background:
-        radial-gradient(circle at 30% 35%,rgba(70,145,255,.65),transparent 25%),
-        radial-gradient(circle at 75% 65%,rgba(117,58,255,.5),transparent 30%),
-        linear-gradient(135deg,#111a34,#080b16);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:58px;
-    margin-bottom:18px;
-    border:1px solid rgba(255,255,255,.06);
-}
-
-.card-game{
-    color:#7f8ba4;
-    font-size:11px;
-    margin-bottom:8px;
-}
-
-.card-title{
-    font-size:20px;
-    font-weight:800;
-    margin-bottom:15px;
-}
-
-.card-bottom{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-}
-
-.price small{
-    display:block;
-    color:#68758f;
-    font-size:10px;
-    margin-bottom:4px;
-}
-
-.price strong{
-    color:#4b9aff;
-    font-size:25px;
-}
-
-.buy{
-    border:0;
-    background:#fff;
-    color:#080b14;
-    padding:11px 18px;
-    border-radius:10px;
-    font-weight:800;
-}
-
-/* =========================
-   SECTION
-========================= */
-
-.section{
-    width:min(1200px,92%);
-    margin:0 auto 100px;
-}
-
-.section-head{
-    display:flex;
-    align-items:end;
-    justify-content:space-between;
-    margin-bottom:25px;
-}
-
-.section-title{
-    font-size:27px;
-    font-weight:800;
-}
-
-.section-sub{
-    color:#69758c;
-    font-size:13px;
-    margin-top:7px;
-}
-
-.view-all{
-    color:#4c96ff;
+a{
     text-decoration:none;
+    color:inherit;
+}
+
+/* HEADER */
+
+.header{
+    height:70px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.header-inner{
+    width:min(1280px,94%);
+    height:100%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+    color:#182230;
+    white-space:nowrap;
+}
+
+.logo span{
+    color:var(--blue);
+}
+
+.search-box{
+    flex:1;
+    max-width:620px;
+    height:43px;
+    border:1px solid #dce2e9;
+    border-radius:8px;
+    display:flex;
+    background:#fafbfc;
+}
+
+.search-box input{
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
+    padding:0 15px;
+    font-size:14px;
+    color:var(--text);
+}
+
+.search-box button{
+    width:48px;
+    border:0;
+    background:var(--blue);
+    color:#fff;
+    border-radius:0 7px 7px 0;
+    font-size:17px;
+}
+
+.header-actions{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.header-btn{
+    border:1px solid var(--border);
+    background:#fff;
+    color:#3d4a5a;
+    padding:10px 14px;
+    border-radius:7px;
     font-size:13px;
     font-weight:700;
 }
 
-/* =========================
-   OYUNLAR
-========================= */
+.header-btn.primary{
+    color:#fff;
+    background:var(--blue);
+    border-color:var(--blue);
+}
+
+/* MAIN */
+
+.container{
+    width:min(1280px,94%);
+    margin:auto;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:230px 1fr;
+    gap:20px;
+    padding:22px 0 60px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:9px;
+    padding:16px;
+    height:max-content;
+    box-shadow:var(--shadow);
+}
+
+.sidebar-title{
+    font-size:12px;
+    font-weight:800;
+    color:#929dab;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.category{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:11px 10px;
+    border-radius:7px;
+    color:#536173;
+    font-size:13px;
+    margin-bottom:3px;
+    cursor:pointer;
+}
+
+.category:hover,
+.category.active{
+    background:#edf4fd;
+    color:var(--blue);
+}
+
+.category span{
+    color:#9aa5b4;
+    font-size:11px;
+}
+
+/* HERO */
+
+.hero{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    min-height:270px;
+    padding:42px 45px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    overflow:hidden;
+    position:relative;
+    box-shadow:var(--shadow);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:650px;
+}
+
+.hero-label{
+    color:var(--blue);
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:13px;
+}
+
+.hero h1{
+    font-size:38px;
+    line-height:1.15;
+    color:#172231;
+    margin-bottom:13px;
+}
+
+.hero p{
+    color:#758294;
+    line-height:1.7;
+    font-size:14px;
+    max-width:560px;
+}
+
+.hero-buttons{
+    margin-top:22px;
+    display:flex;
+    gap:9px;
+}
+
+.hero-btn{
+    padding:12px 19px;
+    border-radius:7px;
+    border:1px solid var(--border);
+    background:#fff;
+    font-size:13px;
+    font-weight:800;
+}
+
+.hero-btn.blue{
+    background:var(--blue);
+    color:#fff;
+    border-color:var(--blue);
+}
+
+.hero-shape{
+    position:absolute;
+    right:-80px;
+    top:-80px;
+    width:400px;
+    height:400px;
+    border-radius:50%;
+    background:#edf4fc;
+}
+
+.hero-shape:after{
+    content:"";
+    position:absolute;
+    left:80px;
+    top:80px;
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    border:35px solid #dceafa;
+}
+
+/* SECTION */
+
+.section{
+    margin-top:26px;
+}
+
+.section-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.section-title{
+    font-size:19px;
+    font-weight:800;
+}
+
+.section-subtitle{
+    color:#8a96a5;
+    font-size:12px;
+    margin-top:4px;
+}
+
+/* GAMES */
 
 .games{
     display:grid;
     grid-template-columns:repeat(6,1fr);
-    gap:13px;
+    gap:10px;
 }
 
 .game{
-    position:relative;
-    overflow:hidden;
-    min-height:135px;
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:17px;
-    background:rgba(255,255,255,.035);
-    padding:20px;
-    transition:.3s;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:17px 13px;
+    text-align:center;
+    transition:.2s;
     cursor:pointer;
 }
 
 .game:hover{
-    transform:translateY(-5px);
-    border-color:rgba(63,140,255,.35);
-    background:rgba(50,110,255,.07);
+    transform:translateY(-2px);
+    border-color:#c7d9ef;
+    box-shadow:var(--shadow);
 }
 
 .game-icon{
-    font-size:30px;
-    margin-bottom:20px;
+    width:43px;
+    height:43px;
+    border-radius:9px;
+    background:#eef3f8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto auto 10px;
+    font-size:22px;
 }
 
-.game-name{
-    font-weight:800;
-    font-size:14px;
+.game strong{
+    display:block;
+    font-size:12px;
 }
 
-.game-count{
-    color:#657189;
+.game small{
+    display:block;
+    color:#9aa5b3;
     font-size:10px;
-    margin-top:5px;
+    margin-top:4px;
 }
 
-/* =========================
-   İLANLAR
-========================= */
+/* PRODUCTS */
 
-.listings{
+.products{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:18px;
+    gap:13px;
 }
 
-.listing{
+.product{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:9px;
     overflow:hidden;
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:18px;
-    background:rgba(13,17,29,.9);
-    transition:.3s;
+    transition:.2s;
+    box-shadow:var(--shadow);
 }
 
-.listing:hover{
-    transform:translateY(-6px);
-    border-color:rgba(65,135,255,.3);
+.product:hover{
+    transform:translateY(-3px);
 }
 
-.listing-image{
+.product-image{
     height:145px;
+    background:#edf1f5;
     display:flex;
-    justify-content:center;
     align-items:center;
-    font-size:52px;
-    background:
-        radial-gradient(circle at 50% 50%,rgba(52,119,255,.2),transparent 55%),
-        #101526;
+    justify-content:center;
+    font-size:55px;
+    position:relative;
 }
 
-.listing-content{
-    padding:17px;
+.favorite{
+    position:absolute;
+    right:10px;
+    top:10px;
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    border:1px solid #dfe4ea;
+    background:#fff;
+    font-size:15px;
 }
 
-.category{
+.favorite.active{
+    color:#e14d5d;
+}
+
+.product-body{
+    padding:14px;
+}
+
+.product-game{
+    color:var(--blue);
     font-size:10px;
-    color:#6383b7;
-    font-weight:700;
-    margin-bottom:8px;
+    font-weight:800;
+    margin-bottom:6px;
 }
 
-.listing h3{
-    font-size:14px;
-    line-height:1.4;
-    margin-bottom:15px;
+.product-title{
+    font-size:13px;
+    font-weight:700;
+    line-height:1.5;
+    min-height:39px;
 }
 
 .seller{
     display:flex;
     align-items:center;
-    gap:8px;
-    color:#7b879d;
-    font-size:10px;
-    padding-bottom:14px;
-    border-bottom:1px solid rgba(255,255,255,.06);
+    gap:7px;
+    margin-top:13px;
+    padding-top:11px;
+    border-top:1px solid #edf0f3;
 }
 
 .avatar{
     width:25px;
     height:25px;
     border-radius:50%;
-    background:linear-gradient(135deg,#3185ff,#693dff);
+    background:#dfeaf8;
+    color:var(--blue);
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#fff;
     font-size:10px;
     font-weight:900;
 }
 
-.listing-footer{
+.seller-name{
+    font-size:10px;
+    color:#697586;
+}
+
+.rating{
+    margin-left:auto;
+    color:#d99824;
+    font-size:10px;
+}
+
+.product-bottom{
+    margin-top:12px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding-top:14px;
 }
 
-.listing-price{
-    color:#4b9aff;
+.price{
+    font-size:18px;
+    font-weight:900;
+    color:#1c2734;
+}
+
+.buy-btn{
+    border:0;
+    background:var(--blue);
+    color:#fff;
+    border-radius:6px;
+    padding:9px 12px;
+    font-size:11px;
+    font-weight:800;
+}
+
+/* TRUST */
+
+.trust{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.trust-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:9px;
+    padding:22px;
+    display:flex;
+    gap:15px;
+}
+
+.trust-icon{
+    width:42px;
+    height:42px;
+    border-radius:8px;
+    background:#edf4fd;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    flex:none;
+}
+
+.trust h3{
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.trust p{
+    font-size:11px;
+    color:#8994a3;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+.footer{
+    background:#182230;
+    color:#fff;
+    margin-top:30px;
+}
+
+.footer-inner{
+    width:min(1280px,94%);
+    margin:auto;
+    padding:35px 0;
+    display:flex;
+    justify-content:space-between;
+}
+
+.footer-logo{
     font-size:19px;
     font-weight:900;
 }
 
-.rating{
-    color:#f5bd45;
+.footer-logo span{
+    color:#6da6e9;
+}
+
+.footer p{
+    color:#8996a8;
+    font-size:11px;
+    margin-top:8px;
+}
+
+.footer-links{
+    display:flex;
+    gap:25px;
+    color:#aab5c2;
     font-size:11px;
 }
 
-/* =========================
-   GÜVEN
-========================= */
+/* MODAL */
 
-.security{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.security-card{
-    padding:28px;
-    border-radius:18px;
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.045),
-        rgba(255,255,255,.018)
-    );
-    border:1px solid rgba(255,255,255,.07);
-}
-
-.security-icon{
-    width:45px;
-    height:45px;
-    display:flex;
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(20,28,38,.55);
+    z-index:3000;
     align-items:center;
     justify-content:center;
-    border-radius:12px;
-    background:rgba(47,126,255,.1);
-    font-size:21px;
-    margin-bottom:20px;
+    padding:20px;
 }
 
-.security-card h3{
-    font-size:16px;
-    margin-bottom:9px;
+.modal.show{
+    display:flex;
 }
 
-.security-card p{
-    color:#6f7b91;
-    font-size:12px;
-    line-height:1.7;
-}
-
-/* =========================
-   CTA
-========================= */
-
-.cta{
-    position:relative;
+.modal-box{
+    width:420px;
+    max-width:100%;
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 25px 80px rgba(0,0,0,.25);
     overflow:hidden;
-    padding:55px;
-    border-radius:25px;
-    text-align:center;
-    border:1px solid rgba(58,129,255,.18);
-    background:
-        radial-gradient(circle at 50% 0%,rgba(48,120,255,.2),transparent 45%),
-        rgba(17,23,39,.8);
 }
 
-.cta h2{
-    font-size:35px;
-    margin-bottom:12px;
-}
-
-.cta p{
-    color:#77839a;
-    font-size:14px;
-    margin-bottom:25px;
-}
-
-.cta a{
-    display:inline-block;
-    padding:14px 28px;
-    border-radius:11px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:800;
-    background:linear-gradient(135deg,#287dff,#6249ff);
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    border-top:1px solid rgba(255,255,255,.07);
-    padding:45px 0;
-    background:#05070d;
-}
-
-.footer-inner{
-    width:min(1200px,92%);
-    margin:auto;
+.modal-head{
+    padding:20px;
+    border-bottom:1px solid var(--border);
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
-.footer-text{
-    color:#566178;
-    font-size:11px;
+.modal-head strong{
+    font-size:17px;
 }
 
-.footer-links{
+.close{
+    border:0;
+    background:none;
+    font-size:21px;
+    color:#8b96a3;
+}
+
+.modal-body{
+    padding:22px;
+}
+
+.tabs{
     display:flex;
-    gap:20px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:20px;
 }
 
-.footer-links a{
-    color:#68758b;
+.tab{
+    flex:1;
+    padding:11px;
+    border:0;
+    background:none;
+    color:#8793a1;
+    font-weight:700;
+    border-bottom:2px solid transparent;
+}
+
+.tab.active{
+    color:var(--blue);
+    border-color:var(--blue);
+}
+
+.form-group{
+    margin-bottom:14px;
+}
+
+.form-group label{
+    display:block;
     font-size:11px;
-    text-decoration:none;
+    font-weight:700;
+    margin-bottom:6px;
+    color:#566273;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    border:1px solid #dce2e8;
+    border-radius:6px;
+    padding:11px;
+    outline:0;
+    font-size:13px;
+    background:#fff;
+}
 
-@media(max-width:950px){
+.form-group textarea{
+    min-height:90px;
+    resize:vertical;
+}
 
-    .nav-links{
-        display:none;
-    }
+.submit{
+    width:100%;
+    padding:12px;
+    border:0;
+    border-radius:7px;
+    background:var(--blue);
+    color:#fff;
+    font-weight:800;
+}
 
-    .hero{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
+.form-message{
+    font-size:11px;
+    margin-bottom:12px;
+    color:var(--red);
+}
 
-    .hero-text{
-        margin-left:auto;
-        margin-right:auto;
-    }
+/* USER PANEL */
 
-    .search{
-        margin:auto;
-    }
+.user-menu{
+    display:none;
+    position:absolute;
+    right:3%;
+    top:62px;
+    width:230px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:8px;
+    box-shadow:0 15px 40px rgba(0,0,0,.13);
+    padding:8px;
+    z-index:1200;
+}
 
-    .hero-stats{
-        justify-content:center;
-    }
+.user-menu.show{
+    display:block;
+}
 
-    .hero-right{
-        height:380px;
-    }
+.user-menu-item{
+    padding:11px;
+    border-radius:6px;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.user-menu-item:hover{
+    background:#f1f4f7;
+}
+
+.user-info{
+    padding:12px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:5px;
+}
+
+.user-info strong{
+    display:block;
+    font-size:13px;
+}
+
+.user-info small{
+    color:#929daa;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+    display:none;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:25px;
+    box-shadow:var(--shadow);
+}
+
+.dashboard.show{
+    display:block;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:20px 0;
+}
+
+.dashboard-card{
+    border:1px solid var(--border);
+    padding:17px;
+    border-radius:8px;
+}
+
+.dashboard-card small{
+    color:#8995a4;
+    font-size:10px;
+}
+
+.dashboard-card strong{
+    display:block;
+    font-size:22px;
+    margin-top:7px;
+}
+
+.list-row{
+    border-top:1px solid var(--border);
+    padding:14px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:12px;
+}
+
+.logout{
+    color:var(--red);
+}
+
+/* PRODUCT MODAL */
+
+.detail{
+    padding:22px;
+}
+
+.detail-image{
+    height:190px;
+    background:#edf1f5;
+    border-radius:8px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:70px;
+    margin-bottom:18px;
+}
+
+.detail-game{
+    color:var(--blue);
+    font-size:11px;
+    font-weight:800;
+}
+
+.detail h2{
+    margin:7px 0 10px;
+    font-size:21px;
+}
+
+.detail-description{
+    color:#778393;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.detail-price{
+    font-size:26px;
+    font-weight:900;
+    margin:18px 0;
+}
+
+.full-buy{
+    width:100%;
+    padding:13px;
+    border:0;
+    border-radius:7px;
+    background:var(--blue);
+    color:#fff;
+    font-weight:900;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
 
     .games{
         grid-template-columns:repeat(3,1fr);
     }
 
-    .listings{
+    .products{
         grid-template-columns:repeat(2,1fr);
+    }
+
+    .layout{
+        grid-template-columns:180px 1fr;
+    }
+
+    .hero h1{
+        font-size:31px;
     }
 }
 
-@media(max-width:600px){
+@media(max-width:750px){
 
-    .navbar{
-        height:65px;
+    .header-inner{
+        gap:10px;
     }
 
     .logo{
-        font-size:19px;
+        font-size:18px;
     }
 
-    .logo small{
+    .search-box{
         display:none;
     }
 
-    .btn-login{
+    .header-btn{
+        padding:9px 10px;
+    }
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
         display:none;
     }
 
     .hero{
-        padding:45px 0;
+        padding:30px 25px;
+        min-height:300px;
     }
 
-    .hero h1{
-        font-size:43px;
-        letter-spacing:-2px;
-    }
-
-    .hero-text{
-        font-size:14px;
-    }
-
-    .search{
-        height:55px;
-    }
-
-    .search button{
-        padding:0 14px;
-    }
-
-    .hero-right{
-        height:330px;
-    }
-
-    .market-card{
-        width:100%;
+    .hero-shape{
+        opacity:.4;
     }
 
     .games{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .listings{
+    .trust{
         grid-template-columns:1fr;
     }
 
-    .security{
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:500px){
+
+    .products{
         grid-template-columns:1fr;
     }
 
-    .section{
-        margin-bottom:70px;
-    }
-
-    .cta{
-        padding:35px 20px;
-    }
-
-    .cta h2{
+    .hero h1{
         font-size:27px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
     }
 
     .footer-inner{
         flex-direction:column;
         gap:20px;
+    }
+
+    .footer-links{
+        flex-wrap:wrap;
     }
 }
 </style>
@@ -773,126 +901,512 @@ footer{
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
+<!-- HEADER -->
 
-<nav class="navbar">
+<header class="header">
 
-<div class="nav-inner">
+<div class="header-inner">
 
-    <div class="logo">
+    <a href="#" class="logo">
         BAYRAK<span>SUNUCUM</span>
-        <small>DİJİTAL OYUN PAZARYERİ</small>
-    </div>
+    </a>
 
-    <ul class="nav-links">
-        <li><a href="#">Ana Sayfa</a></li>
-        <li><a href="#oyunlar">Oyunlar</a></li>
-        <li><a href="#ilanlar">İlanlar</a></li>
-        <li><a href="#guven">Güvenli Alışveriş</a></li>
-    </ul>
-
-    <div class="nav-buttons">
-        <a href="#" class="btn-login">Giriş Yap</a>
-        <a href="#" class="btn-register">Kayıt Ol</a>
-    </div>
-
-</div>
-
-</nav>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero">
-
-<div class="hero-left">
-
-    <div class="hero-badge">
-        <span class="status-dot"></span>
-        PAZARYERİ AKTİF
-    </div>
-
-    <h1>
-        OYUN DÜNYASININ
-        <span>PAZARYERİ.</span>
-    </h1>
-
-    <p class="hero-text">
-        Oyun hesapları, oyun paraları, itemler ve dijital ürünleri
-        tek bir yerde keşfet. Satın al, sat ve kendi dijital mağazanı oluştur.
-    </p>
-
-    <div class="search">
-
-        <div class="search-icon">⌕</div>
-
+    <div class="search-box">
         <input
+            id="searchInput"
             type="text"
-            placeholder="Hesap, item veya oyun ara..."
+            placeholder="Oyun, hesap, item veya ürün ara..."
+            onkeyup="searchProducts()"
         >
+        <button onclick="searchProducts()">⌕</button>
+    </div>
 
-        <button>Ara</button>
+    <div class="header-actions" id="headerActions">
+
+        <button class="header-btn" onclick="openAuth('login')">
+            Giriş Yap
+        </button>
+
+        <button class="header-btn primary" onclick="openAuth('register')">
+            Kayıt Ol
+        </button>
 
     </div>
 
-    <div class="hero-stats">
+</div>
 
-        <div class="stat">
-            <strong>1.2K+</strong>
-            <span>Aktif İlan</span>
+</header>
+
+
+<!-- USER MENU -->
+
+<div class="user-menu" id="userMenu">
+
+    <div class="user-info">
+        <strong id="menuUsername">Kullanıcı</strong>
+        <small id="menuEmail">kullanici@email.com</small>
+    </div>
+
+    <div class="user-menu-item" onclick="showDashboard()">
+        👤 Hesabım
+    </div>
+
+    <div class="user-menu-item" onclick="openListingModal()">
+        ＋ İlan Ver
+    </div>
+
+    <div class="user-menu-item" onclick="showFavorites()">
+        ♡ Favorilerim
+    </div>
+
+    <div class="user-menu-item logout" onclick="logout()">
+        Çıkış Yap
+    </div>
+
+</div>
+
+
+<main class="container">
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        Kategoriler
+    </div>
+
+    <div class="category active" onclick="filterGame('Tümü',this)">
+        Tüm Ürünler
+        <span>1.2K</span>
+    </div>
+
+    <div class="category" onclick="filterGame('Wolfteam',this)">
+        🐺 Wolfteam
+        <span>320</span>
+    </div>
+
+    <div class="category" onclick="filterGame('Valorant',this)">
+        🎯 Valorant
+        <span>280</span>
+    </div>
+
+    <div class="category" onclick="filterGame('Clash of Clans',this)">
+        ⚔️ Clash of Clans
+        <span>190</span>
+    </div>
+
+    <div class="category" onclick="filterGame('PUBG',this)">
+        🔫 PUBG
+        <span>160</span>
+    </div>
+
+    <div class="category" onclick="filterGame('Steam',this)">
+        🎮 Steam
+        <span>140</span>
+    </div>
+
+    <br>
+
+    <div class="sidebar-title">
+        Ürün Türü
+    </div>
+
+    <div class="category">
+        Hesaplar
+    </div>
+
+    <div class="category">
+        Oyun Parası
+    </div>
+
+    <div class="category">
+        Item / Skin
+    </div>
+
+    <div class="category">
+        Kod / Key
+    </div>
+
+</aside>
+
+
+<!-- CONTENT -->
+
+<section>
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            BAYRAKSUNUCUM PAZARYERİ
         </div>
 
-        <div class="stat">
-            <strong>850+</strong>
-            <span>Satıcı</span>
+        <h1>
+            Dijital oyun ürünlerini<br>
+            <b>tek yerde keşfet.</b>
+        </h1>
+
+        <p>
+            Oyun hesapları, itemler, oyun paraları ve dijital
+            ürünleri keşfet. Satıcıları karşılaştır,
+            istediğin ürünü kolayca bul.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="hero-btn blue"
+                onclick="document.getElementById('products').scrollIntoView()"
+            >
+                İlanları Keşfet
+            </button>
+
+            <button
+                class="hero-btn"
+                onclick="openListingModal()"
+            >
+                Satış Yap
+            </button>
+
         </div>
 
-        <div class="stat">
-            <strong>25+</strong>
-            <span>Oyun</span>
+    </div>
+
+    <div class="hero-shape"></div>
+
+</div>
+
+
+<!-- GAMES -->
+
+<div class="section">
+
+<div class="section-header">
+
+    <div>
+        <div class="section-title">
+            Popüler Oyunlar
+        </div>
+
+        <div class="section-subtitle">
+            En çok tercih edilen kategoriler
+        </div>
+    </div>
+
+</div>
+
+<div class="games">
+
+    <div class="game" onclick="filterGame('Wolfteam')">
+        <div class="game-icon">🐺</div>
+        <strong>Wolfteam</strong>
+        <small>320 ilan</small>
+    </div>
+
+    <div class="game" onclick="filterGame('Valorant')">
+        <div class="game-icon">🎯</div>
+        <strong>Valorant</strong>
+        <small>280 ilan</small>
+    </div>
+
+    <div class="game" onclick="filterGame('Clash of Clans')">
+        <div class="game-icon">⚔️</div>
+        <strong>Clash of Clans</strong>
+        <small>190 ilan</small>
+    </div>
+
+    <div class="game" onclick="filterGame('PUBG')">
+        <div class="game-icon">🔫</div>
+        <strong>PUBG</strong>
+        <small>160 ilan</small>
+    </div>
+
+    <div class="game" onclick="filterGame('Steam')">
+        <div class="game-icon">🎮</div>
+        <strong>Steam</strong>
+        <small>140 ilan</small>
+    </div>
+
+    <div class="game">
+        <div class="game-icon">＋</div>
+        <strong>Diğer</strong>
+        <small>100+ ilan</small>
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCTS -->
+
+<div class="section" id="products">
+
+<div class="section-header">
+
+    <div>
+        <div class="section-title">
+            Öne Çıkan İlanlar
+        </div>
+
+        <div class="section-subtitle">
+            Güncel ürünler ve güvenilir satıcılar
+        </div>
+    </div>
+
+</div>
+
+<div class="products" id="productGrid"></div>
+
+</div>
+
+
+<!-- TRUST -->
+
+<div class="section">
+
+<div class="section-header">
+
+    <div>
+        <div class="section-title">
+            BAYRAKSUNUCUM neden?
+        </div>
+
+        <div class="section-subtitle">
+            Basit, düzenli ve güven odaklı marketplace
+        </div>
+    </div>
+
+</div>
+
+<div class="trust">
+
+    <div class="trust-card">
+
+        <div class="trust-icon">🛡️</div>
+
+        <div>
+            <h3>Güvenli Alışveriş</h3>
+
+            <p>
+                Satıcı bilgileri ve ürün detayları
+                tek ekranda görüntülenir.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="trust-card">
+
+        <div class="trust-icon">👤</div>
+
+        <div>
+            <h3>Satıcı Profilleri</h3>
+
+            <p>
+                Satıcılar kendi ilanlarını yönetebilir
+                ve profil oluşturabilir.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="trust-card">
+
+        <div class="trust-icon">⚡</div>
+
+        <div>
+            <h3>Hızlı İlan</h3>
+
+            <p>
+                Kullanıcılar birkaç adımda
+                kendi ürünlerini yayınlayabilir.
+            </p>
         </div>
 
     </div>
 
 </div>
 
+</div>
 
-<div class="hero-right">
 
-    <div class="glow"></div>
+<!-- DASHBOARD -->
 
-    <div class="market-card">
+<div class="dashboard" id="dashboard">
 
-        <div class="card-top">
-            <strong>ÖNE ÇIKAN İLAN</strong>
-            <span class="live">● AKTİF</span>
-        </div>
+    <div class="section-header">
 
-        <div class="card-image">
-            🎮
-        </div>
-
-        <div class="card-game">
-            WOLFTEAM
-        </div>
-
-        <div class="card-title">
-            Güçlü Başlangıç Hesabı
-        </div>
-
-        <div class="card-bottom">
-
-            <div class="price">
-                <small>FİYAT</small>
-                <strong>₺349</strong>
+        <div>
+            <div class="section-title">
+                Hesabım
             </div>
 
-            <button class="buy">
-                İncele
+            <div class="section-subtitle">
+                BAYRAKSUNUCUM kullanıcı paneli
+            </div>
+        </div>
+
+        <button class="hero-btn" onclick="hideDashboard()">
+            Pazaryerine Dön
+        </button>
+
+    </div>
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+            <small>BAKİYE</small>
+            <strong>₺0,00</strong>
+        </div>
+
+        <div class="dashboard-card">
+            <small>İLANLARIM</small>
+            <strong id="myListingCount">0</strong>
+        </div>
+
+        <div class="dashboard-card">
+            <small>FAVORİLERİM</small>
+            <strong id="favoriteCount">0</strong>
+        </div>
+
+    </div>
+
+    <h3 style="font-size:15px;margin-bottom:10px;">
+        Hesap Bilgilerim
+    </h3>
+
+    <div class="list-row">
+        <span>Kullanıcı adı</span>
+        <strong id="dashUsername">-</strong>
+    </div>
+
+    <div class="list-row">
+        <span>E-posta</span>
+        <strong id="dashEmail">-</strong>
+    </div>
+
+</div>
+
+</section>
+
+</div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="footer-inner">
+
+    <div>
+        <div class="footer-logo">
+            BAYRAK<span>SUNUCUM</span>
+        </div>
+
+        <p>
+            Dijital oyun ürünleri pazaryeri
+        </p>
+    </div>
+
+    <div class="footer-links">
+        <a href="#">Hakkımızda</a>
+        <a href="#">Kurallar</a>
+        <a href="#">Gizlilik</a>
+        <a href="#">Destek</a>
+    </div>
+
+</div>
+
+</footer>
+
+
+<!-- AUTH MODAL -->
+
+<div class="modal" id="authModal">
+
+<div class="modal-box">
+
+    <div class="modal-head">
+
+        <strong>BAYRAKSUNUCUM</strong>
+
+        <button class="close" onclick="closeModal('authModal')">
+            ×
+        </button>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="tabs">
+
+            <button
+                id="loginTab"
+                class="tab active"
+                onclick="switchAuth('login')"
+            >
+                Giriş Yap
+            </button>
+
+            <button
+                id="registerTab"
+                class="tab"
+                onclick="switchAuth('register')"
+            >
+                Kayıt Ol
+            </button>
+
+        </div>
+
+        <div id="authMessage" class="form-message"></div>
+
+        <div id="loginForm">
+
+            <div class="form-group">
+                <label>E-POSTA</label>
+                <input id="loginEmail" type="email">
+            </div>
+
+            <div class="form-group">
+                <label>ŞİFRE</label>
+                <input id="loginPassword" type="password">
+            </div>
+
+            <button class="submit" onclick="login()">
+                Giriş Yap
+            </button>
+
+        </div>
+
+
+        <div id="registerForm" style="display:none">
+
+            <div class="form-group">
+                <label>KULLANICI ADI</label>
+                <input id="registerUsername">
+            </div>
+
+            <div class="form-group">
+                <label>E-POSTA</label>
+                <input id="registerEmail" type="email">
+            </div>
+
+            <div class="form-group">
+                <label>ŞİFRE</label>
+                <input id="registerPassword" type="password">
+            </div>
+
+            <button class="submit" onclick="register()">
+                Hesap Oluştur
             </button>
 
         </div>
@@ -901,375 +1415,1000 @@ footer{
 
 </div>
 
-</section>
+</div>
 
 
-<!-- =========================
-     OYUNLAR
-========================= -->
+<!-- LISTING MODAL -->
 
-<section class="section" id="oyunlar">
+<div class="modal" id="listingModal">
 
-<div class="section-head">
+<div class="modal-box">
 
-    <div>
-        <div class="section-title">Popüler Oyunlar</div>
-        <div class="section-sub">
-            Aradığın oyunu seç ve ilanları keşfet.
-        </div>
+    <div class="modal-head">
+
+        <strong>Yeni İlan Oluştur</strong>
+
+        <button class="close" onclick="closeModal('listingModal')">
+            ×
+        </button>
+
     </div>
 
-    <a href="#" class="view-all">Tümünü Gör →</a>
+    <div class="modal-body">
+
+        <div id="listingMessage" class="form-message"></div>
+
+        <div class="form-group">
+            <label>OYUN</label>
+
+            <select id="listingGame">
+
+                <option>Wolfteam</option>
+                <option>Valorant</option>
+                <option>Clash of Clans</option>
+                <option>PUBG</option>
+                <option>Steam</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>İLAN BAŞLIĞI</label>
+
+            <input
+                id="listingTitle"
+                placeholder="Örn: Güçlü Wolfteam hesabı"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>FİYAT</label>
+
+            <input
+                id="listingPrice"
+                type="number"
+                placeholder="250"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>AÇIKLAMA</label>
+
+            <textarea
+                id="listingDescription"
+                placeholder="Ürün hakkında bilgi..."
+            ></textarea>
+
+        </div>
+
+        <button class="submit" onclick="createListing()">
+            İlanı Yayınla
+        </button>
+
+    </div>
+
+</div>
 
 </div>
 
 
-<div class="games">
+<!-- PRODUCT DETAIL -->
 
-    <div class="game">
-        <div class="game-icon">🐺</div>
-        <div class="game-name">Wolfteam</div>
-        <div class="game-count">320+ ilan</div>
-    </div>
+<div class="modal" id="productModal">
 
-    <div class="game">
-        <div class="game-icon">💥</div>
-        <div class="game-name">Valorant</div>
-        <div class="game-count">280+ ilan</div>
-    </div>
+<div class="modal-box">
 
-    <div class="game">
-        <div class="game-icon">⚔️</div>
-        <div class="game-name">Clash of Clans</div>
-        <div class="game-count">190+ ilan</div>
-    </div>
+    <div class="modal-head">
 
-    <div class="game">
-        <div class="game-icon">🔫</div>
-        <div class="game-name">PUBG</div>
-        <div class="game-count">160+ ilan</div>
-    </div>
+        <strong>Ürün Detayı</strong>
 
-    <div class="game">
-        <div class="game-icon">🎮</div>
-        <div class="game-name">Steam</div>
-        <div class="game-count">140+ ilan</div>
-    </div>
-
-    <div class="game">
-        <div class="game-icon">➕</div>
-        <div class="game-name">Diğer</div>
-        <div class="game-count">100+ ilan</div>
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     İLANLAR
-========================= -->
-
-<section class="section" id="ilanlar">
-
-<div class="section-head">
-
-    <div>
-        <div class="section-title">Öne Çıkan İlanlar</div>
-        <div class="section-sub">
-            Satıcılarımız tarafından yayınlanan popüler ürünler.
-        </div>
-    </div>
-
-    <a href="#" class="view-all">Tüm İlanlar →</a>
-
-</div>
-
-
-<div class="listings">
-
-
-    <div class="listing">
-
-        <div class="listing-image">
-            🐺
-        </div>
-
-        <div class="listing-content">
-
-            <div class="category">
-                WOLFTEAM • HESAP
-            </div>
-
-            <h3>
-                Full karakterli Wolfteam hesabı
-            </h3>
-
-            <div class="seller">
-                <div class="avatar">B</div>
-                Bayrak
-            </div>
-
-            <div class="listing-footer">
-
-                <div class="listing-price">
-                    ₺250
-                </div>
-
-                <div class="rating">
-                    ★ 4.9
-                </div>
-
-            </div>
-
-        </div>
+        <button class="close" onclick="closeModal('productModal')">
+            ×
+        </button>
 
     </div>
 
+    <div class="detail">
 
-
-    <div class="listing">
-
-        <div class="listing-image">
-            💥
-        </div>
-
-        <div class="listing-content">
-
-            <div class="category">
-                VALORANT • HESAP
-            </div>
-
-            <h3>
-                Valorant yüksek seviyeli hesap
-            </h3>
-
-            <div class="seller">
-                <div class="avatar">E</div>
-                Emre
-            </div>
-
-            <div class="listing-footer">
-
-                <div class="listing-price">
-                    ₺450
-                </div>
-
-                <div class="rating">
-                    ★ 5.0
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="listing">
-
-        <div class="listing-image">
-            ⚔️
-        </div>
-
-        <div class="listing-content">
-
-            <div class="category">
-                CLASH OF CLANS • HESAP
-            </div>
-
-            <h3>
-                Belediye 13 güçlü başlangıç hesabı
-            </h3>
-
-            <div class="seller">
-                <div class="avatar">K</div>
-                KralOyuncu
-            </div>
-
-            <div class="listing-footer">
-
-                <div class="listing-price">
-                    ₺650
-                </div>
-
-                <div class="rating">
-                    ★ 4.8
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="listing">
-
-        <div class="listing-image">
+        <div class="detail-image" id="detailImage">
             🎮
         </div>
 
-        <div class="listing-content">
+        <div class="detail-game" id="detailGame">
+            OYUN
+        </div>
 
-            <div class="category">
-                STEAM • HESAP
+        <h2 id="detailTitle">
+            Ürün
+        </h2>
+
+        <div class="detail-description" id="detailDescription">
+            Ürün açıklaması
+        </div>
+
+        <div class="detail-price" id="detailPrice">
+            ₺0
+        </div>
+
+        <button class="full-buy" onclick="buyProduct()">
+            Satın Al
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   VERİLER
+========================= */
+
+let products = JSON.parse(localStorage.getItem("bayrak_products")) || [
+
+{
+    id:1,
+    game:"Wolfteam",
+    title:"Güçlü başlangıç Wolfteam hesabı",
+    price:250,
+    seller:"Bayrak",
+    rating:"4.9",
+    icon:"🐺",
+    description:"Wolfteam başlangıç hesabı. Detaylı bilgiler satın alma öncesinde satıcı ile görüşülebilir."
+},
+
+{
+    id:2,
+    game:"Valorant",
+    title:"Valorant yüksek seviyeli hesap",
+    price:450,
+    seller:"Emre",
+    rating:"5.0",
+    icon:"🎯",
+    description:"Valorant hesap ilanı. Hesap detayları ürün tesliminden önce incelenebilir."
+},
+
+{
+    id:3,
+    game:"Clash of Clans",
+    title:"Belediye 13 güçlü hesap",
+    price:650,
+    seller:"KralOyuncu",
+    rating:"4.8",
+    icon:"⚔️",
+    description:"Clash of Clans güçlü başlangıç hesabı."
+},
+
+{
+    id:4,
+    game:"PUBG",
+    title:"PUBG Mobile oyun hesabı",
+    price:320,
+    seller:"GameStore",
+    rating:"4.9",
+    icon:"🔫",
+    description:"PUBG Mobile hesap ilanı."
+},
+
+{
+    id:5,
+    game:"Steam",
+    title:"Oyun yüklü Steam hesabı",
+    price:180,
+    seller:"GameStore",
+    rating:"4.9",
+    icon:"🎮",
+    description:"Steam dijital hesap ilanı."
+},
+
+{
+    id:6,
+    game:"Wolfteam",
+    title:"Wolfteam gelişmiş hesap",
+    price:390,
+    seller:"Bayrak",
+    rating:"4.9",
+    icon:"🐺",
+    description:"Gelişmiş Wolfteam hesap ilanı."
+}
+
+];
+
+let currentUser =
+    JSON.parse(localStorage.getItem("bayrak_user")) || null;
+
+let favorites =
+    JSON.parse(localStorage.getItem("bayrak_favorites")) || [];
+
+let currentProduct = null;
+
+
+/* =========================
+   ÜRÜNLERİ KAYDET
+========================= */
+
+function saveProducts(){
+
+    localStorage.setItem(
+        "bayrak_products",
+        JSON.stringify(products)
+    );
+
+}
+
+
+/* =========================
+   ÜRÜNLERİ GÖSTER
+========================= */
+
+function renderProducts(list = products){
+
+    const grid =
+        document.getElementById("productGrid");
+
+    grid.innerHTML = "";
+
+    if(list.length === 0){
+
+        grid.innerHTML = `
+            <div style="
+                grid-column:1/-1;
+                background:#fff;
+                border:1px solid #e5e9ef;
+                border-radius:8px;
+                padding:40px;
+                text-align:center;
+                color:#8793a1;
+                font-size:13px;
+            ">
+                Aradığın ürün bulunamadı.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    list.forEach(product => {
+
+        const fav =
+            favorites.includes(product.id);
+
+        grid.innerHTML += `
+
+        <div class="product">
+
+            <div
+                class="product-image"
+                onclick="openProduct(${product.id})"
+                style="cursor:pointer"
+            >
+
+                ${product.icon}
+
+                <button
+                    class="favorite ${fav ? "active":""}"
+                    onclick="event.stopPropagation();toggleFavorite(${product.id})"
+                >
+                    ${fav ? "♥":"♡"}
+                </button>
+
             </div>
 
-            <h3>
-                Oyun yüklü Steam hesabı
-            </h3>
+            <div class="product-body">
 
-            <div class="seller">
-                <div class="avatar">G</div>
-                GameStore
-            </div>
-
-            <div class="listing-footer">
-
-                <div class="listing-price">
-                    ₺180
+                <div class="product-game">
+                    ${product.game.toUpperCase()}
                 </div>
 
-                <div class="rating">
-                    ★ 4.9
+                <div
+                    class="product-title"
+                    onclick="openProduct(${product.id})"
+                    style="cursor:pointer"
+                >
+                    ${product.title}
+                </div>
+
+                <div class="seller">
+
+                    <div class="avatar">
+                        ${product.seller.charAt(0).toUpperCase()}
+                    </div>
+
+                    <div class="seller-name">
+                        ${product.seller}
+                    </div>
+
+                    <div class="rating">
+                        ★ ${product.rating}
+                    </div>
+
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ₺${product.price}
+                    </div>
+
+                    <button
+                        class="buy-btn"
+                        onclick="openProduct(${product.id})"
+                    >
+                        İncele
+                    </button>
+
                 </div>
 
             </div>
 
         </div>
 
-    </div>
+        `;
+
+    });
+
+}
 
 
-</div>
+/* =========================
+   ARAMA
+========================= */
 
-</section>
+function searchProducts(){
 
+    const value =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
 
-<!-- =========================
-     GÜVEN
-========================= -->
+    const result =
+        products.filter(p =>
+            p.title.toLowerCase().includes(value) ||
+            p.game.toLowerCase().includes(value) ||
+            p.seller.toLowerCase().includes(value)
+        );
 
-<section class="section" id="guven">
+    renderProducts(result);
 
-<div class="section-head">
-
-    <div>
-        <div class="section-title">Neden BAYRAKSUNUCUM?</div>
-
-        <div class="section-sub">
-            Güvenli ve düzenli bir dijital alışveriş deneyimi.
-        </div>
-    </div>
-
-</div>
-
-
-<div class="security">
-
-    <div class="security-card">
-
-        <div class="security-icon">
-            🛡️
-        </div>
-
-        <h3>Güvenli Alışveriş</h3>
-
-        <p>
-            Kullanıcıların daha güvenli şekilde dijital ürün
-            alıp satabilmesi için tasarlanmış marketplace altyapısı.
-        </p>
-
-    </div>
+}
 
 
-    <div class="security-card">
+/* =========================
+   KATEGORİ
+========================= */
 
-        <div class="security-icon">
-            ⚡
-        </div>
+function filterGame(game, element){
 
-        <h3>Hızlı Teslimat</h3>
+    if(element){
 
-        <p>
-            Dijital ürünlerin hızlı şekilde teslim edilmesi
-            için sade ve kullanışlı ilan sistemi.
-        </p>
+        document
+        .querySelectorAll(".category")
+        .forEach(x => x.classList.remove("active"));
 
-    </div>
+        element.classList.add("active");
 
+    }
 
-    <div class="security-card">
+    if(game === "Tümü"){
 
-        <div class="security-icon">
-            👤
-        </div>
+        renderProducts();
 
-        <h3>Satıcı Profilleri</h3>
+        return;
+    }
 
-        <p>
-            Satıcıların kendi profillerini oluşturabileceği,
-            puan ve ilan bilgilerini gösterebileceği sistem.
-        </p>
+    const result =
+        products.filter(p => p.game === game);
 
-    </div>
+    renderProducts(result);
 
-</div>
+    document
+    .getElementById("products")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
 
-</section>
-
-
-<!-- =========================
-     CTA
-========================= -->
-
-<section class="section">
-
-<div class="cta">
-
-    <h2>Kendi İlanını Yayınla.</h2>
-
-    <p>
-        Ürünlerini milyonlarca oyuncuya ulaştırmak için
-        BAYRAKSUNUCUM'a katıl.
-    </p>
-
-    <a href="#">
-        Ücretsiz Hesap Oluştur
-    </a>
-
-</div>
-
-</section>
+}
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+/* =========================
+   FAVORİ
+========================= */
 
-<footer>
+function toggleFavorite(id){
 
-<div class="footer-inner">
+    if(!currentUser){
 
-    <div class="footer-text">
-        © 2026 BAYRAKSUNUCUM — Dijital Oyun Pazaryeri
-    </div>
+        openAuth("login");
 
-    <div class="footer-links">
-        <a href="#">Hakkımızda</a>
-        <a href="#">Destek</a>
-        <a href="#">Kurallar</a>
-        <a href="#">Gizlilik</a>
-    </div>
+        showAuthMessage(
+            "Favoriye eklemek için giriş yapmalısın."
+        );
 
-</div>
+        return;
+    }
 
-</footer>
+    if(favorites.includes(id)){
 
+        favorites =
+            favorites.filter(x => x !== id);
+
+    }else{
+
+        favorites.push(id);
+
+    }
+
+    localStorage.setItem(
+        "bayrak_favorites",
+        JSON.stringify(favorites)
+    );
+
+    renderProducts();
+
+    updateDashboard();
+
+}
+
+
+/* =========================
+   FAVORİLER
+========================= */
+
+function showFavorites(){
+
+    closeUserMenu();
+
+    const list =
+        products.filter(p =>
+            favorites.includes(p.id)
+        );
+
+    renderProducts(list);
+
+    document
+    .getElementById("products")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   AUTH
+========================= */
+
+function openAuth(type){
+
+    document
+    .getElementById("authModal")
+    .classList.add("show");
+
+    switchAuth(type);
+
+}
+
+
+function switchAuth(type){
+
+    const login =
+        document.getElementById("loginForm");
+
+    const register =
+        document.getElementById("registerForm");
+
+    const loginTab =
+        document.getElementById("loginTab");
+
+    const registerTab =
+        document.getElementById("registerTab");
+
+    document.getElementById("authMessage").innerText = "";
+
+    if(type === "login"){
+
+        login.style.display="block";
+        register.style.display="none";
+
+        loginTab.classList.add("active");
+        registerTab.classList.remove("active");
+
+    }else{
+
+        login.style.display="none";
+        register.style.display="block";
+
+        loginTab.classList.remove("active");
+        registerTab.classList.add("active");
+
+    }
+
+}
+
+
+function register(){
+
+    const username =
+        document.getElementById("registerUsername").value.trim();
+
+    const email =
+        document.getElementById("registerEmail").value.trim();
+
+    const password =
+        document.getElementById("registerPassword").value;
+
+    if(!username || !email || !password){
+
+        showAuthMessage(
+            "Lütfen tüm alanları doldur."
+        );
+
+        return;
+    }
+
+    if(password.length < 4){
+
+        showAuthMessage(
+            "Şifren en az 4 karakter olmalı."
+        );
+
+        return;
+    }
+
+    const users =
+        JSON.parse(localStorage.getItem("bayrak_users")) || [];
+
+    if(users.some(u => u.email === email)){
+
+        showAuthMessage(
+            "Bu e-posta zaten kayıtlı."
+        );
+
+        return;
+    }
+
+    const user = {
+        username,
+        email,
+        password
+    };
+
+    users.push(user);
+
+    localStorage.setItem(
+        "bayrak_users",
+        JSON.stringify(users)
+    );
+
+    currentUser = {
+        username,
+        email
+    };
+
+    localStorage.setItem(
+        "bayrak_user",
+        JSON.stringify(currentUser)
+    );
+
+    closeModal("authModal");
+
+    updateHeader();
+
+    alert("Hesabın başarıyla oluşturuldu.");
+
+}
+
+
+function login(){
+
+    const email =
+        document.getElementById("loginEmail").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    const users =
+        JSON.parse(localStorage.getItem("bayrak_users")) || [];
+
+    const user =
+        users.find(
+            u =>
+            u.email === email &&
+            u.password === password
+        );
+
+    if(!user){
+
+        showAuthMessage(
+            "E-posta veya şifre hatalı."
+        );
+
+        return;
+    }
+
+    currentUser = {
+        username:user.username,
+        email:user.email
+    };
+
+    localStorage.setItem(
+        "bayrak_user",
+        JSON.stringify(currentUser)
+    );
+
+    closeModal("authModal");
+
+    updateHeader();
+
+}
+
+
+function showAuthMessage(message){
+
+    document
+    .getElementById("authMessage")
+    .innerText = message;
+
+}
+
+
+/* =========================
+   HEADER USER
+========================= */
+
+function updateHeader(){
+
+    const actions =
+        document.getElementById("headerActions");
+
+    if(!currentUser){
+
+        actions.innerHTML = `
+
+            <button
+                class="header-btn"
+                onclick="openAuth('login')"
+            >
+                Giriş Yap
+            </button>
+
+            <button
+                class="header-btn primary"
+                onclick="openAuth('register')"
+            >
+                Kayıt Ol
+            </button>
+
+        `;
+
+        return;
+    }
+
+    actions.innerHTML = `
+
+        <button
+            class="header-btn primary"
+            onclick="toggleUserMenu()"
+        >
+            👤 ${currentUser.username}
+        </button>
+
+    `;
+
+    document.getElementById("menuUsername").innerText =
+        currentUser.username;
+
+    document.getElementById("menuEmail").innerText =
+        currentUser.email;
+
+}
+
+
+function toggleUserMenu(){
+
+    document
+    .getElementById("userMenu")
+    .classList.toggle("show");
+
+}
+
+
+function closeUserMenu(){
+
+    document
+    .getElementById("userMenu")
+    .classList.remove("show");
+
+}
+
+
+function logout(){
+
+    currentUser = null;
+
+    localStorage.removeItem("bayrak_user");
+
+    closeUserMenu();
+
+    updateHeader();
+
+    alert("Çıkış yapıldı.");
+
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function showDashboard(){
+
+    if(!currentUser){
+
+        openAuth("login");
+
+        return;
+    }
+
+    closeUserMenu();
+
+    document
+    .getElementById("dashboard")
+    .classList.add("show");
+
+    updateDashboard();
+
+    document
+    .getElementById("dashboard")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+function hideDashboard(){
+
+    document
+    .getElementById("dashboard")
+    .classList.remove("show");
+
+}
+
+
+function updateDashboard(){
+
+    if(!currentUser) return;
+
+    const myListings =
+        products.filter(
+            p => p.seller === currentUser.username
+        );
+
+    document.getElementById("myListingCount").innerText =
+        myListings.length;
+
+    document.getElementById("favoriteCount").innerText =
+        favorites.length;
+
+    document.getElementById("dashUsername").innerText =
+        currentUser.username;
+
+    document.getElementById("dashEmail").innerText =
+        currentUser.email;
+
+}
+
+
+/* =========================
+   İLAN OLUŞTUR
+========================= */
+
+function openListingModal(){
+
+    closeUserMenu();
+
+    if(!currentUser){
+
+        openAuth("login");
+
+        showAuthMessage(
+            "İlan vermek için önce hesap oluşturmalısın."
+        );
+
+        return;
+    }
+
+    document
+    .getElementById("listingModal")
+    .classList.add("show");
+
+}
+
+
+function createListing(){
+
+    const game =
+        document.getElementById("listingGame").value;
+
+    const title =
+        document.getElementById("listingTitle").value.trim();
+
+    const price =
+        Number(
+            document.getElementById("listingPrice").value
+        );
+
+    const description =
+        document.getElementById("listingDescription").value.trim();
+
+    if(!title || !price){
+
+        document
+        .getElementById("listingMessage")
+        .innerText =
+        "Başlık ve fiyat zorunludur.";
+
+        return;
+    }
+
+    const icons = {
+        "Wolfteam":"🐺",
+        "Valorant":"🎯",
+        "Clash of Clans":"⚔️",
+        "PUBG":"🔫",
+        "Steam":"🎮"
+    };
+
+    const newProduct = {
+
+        id:Date.now(),
+
+        game,
+
+        title,
+
+        price,
+
+        seller:currentUser.username,
+
+        rating:"Yeni",
+
+        icon:icons[game] || "🎮",
+
+        description:
+            description ||
+            "Satıcı tarafından oluşturulan dijital ürün ilanı."
+
+    };
+
+    products.unshift(newProduct);
+
+    saveProducts();
+
+    closeModal("listingModal");
+
+    renderProducts();
+
+    updateDashboard();
+
+    document.getElementById("listingTitle").value="";
+    document.getElementById("listingPrice").value="";
+    document.getElementById("listingDescription").value="";
+
+    alert("İlan başarıyla yayınlandı.");
+
+}
+
+
+/* =========================
+   ÜRÜN DETAY
+========================= */
+
+function openProduct(id){
+
+    const product =
+        products.find(p => p.id === id);
+
+    if(!product) return;
+
+    currentProduct = product;
+
+    document.getElementById("detailImage").innerText =
+        product.icon;
+
+    document.getElementById("detailGame").innerText =
+        product.game.toUpperCase();
+
+    document.getElementById("detailTitle").innerText =
+        product.title;
+
+    document.getElementById("detailDescription").innerText =
+        product.description;
+
+    document.getElementById("detailPrice").innerText =
+        "₺" + product.price;
+
+    document
+    .getElementById("productModal")
+    .classList.add("show");
+
+}
+
+
+function buyProduct(){
+
+    if(!currentUser){
+
+        closeModal("productModal");
+
+        openAuth("login");
+
+        showAuthMessage(
+            "Satın almak için giriş yapmalısın."
+        );
+
+        return;
+    }
+
+    alert(
+        "Demo sipariş oluşturuldu.\n\n" +
+        "Gerçek ödeme sistemi backend bağlandığında aktif olacaktır."
+    );
+
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+function closeModal(id){
+
+    document
+    .getElementById(id)
+    .classList.remove("show");
+
+}
+
+
+/* =========================
+   DIŞARI TIKLAMA
+========================= */
+
+window.addEventListener("click",function(e){
+
+    if(e.target.classList.contains("modal")){
+
+        e.target.classList.remove("show");
+
+    }
+
+});
+
+
+/* =========================
+   BAŞLANGIÇ
+========================= */
+
+renderProducts();
+
+updateHeader();
+
+updateDashboard();
+
+</script>
 
 </body>
 </html>
