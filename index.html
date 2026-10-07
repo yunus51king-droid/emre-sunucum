@@ -3,500 +3,460 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>BAYRAKSUNUCUM | Oyun Hesapları ve Dijital Ürünler</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#05070d;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* GAMING ARKA PLAN */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-3;
     background:
-        radial-gradient(circle at 15% 20%, rgba(0, 180, 255, .14), transparent 25%),
-        radial-gradient(circle at 85% 80%, rgba(130, 0, 255, .14), transparent 25%),
-        #05070d;
-    color: #fff;
-    overflow-x: hidden;
+        radial-gradient(circle at 20% 20%,rgba(0,140,255,.20),transparent 28%),
+        radial-gradient(circle at 80% 30%,rgba(120,0,255,.16),transparent 28%),
+        radial-gradient(circle at 50% 100%,rgba(0,255,170,.08),transparent 30%),
+        linear-gradient(135deg,#03050a,#08101c 50%,#04060c);
 }
 
-/* Hareketli ışıklar */
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: .18;
-    z-index: -1;
-    animation: moveLight 12s infinite alternate ease-in-out;
-}
-
-body::before {
-    background: #008cff;
-    left: -250px;
-    top: 100px;
-}
-
-body::after {
-    background: #7b00ff;
-    right: -250px;
-    bottom: 50px;
-    animation-delay: 4s;
-}
-
-@keyframes moveLight {
-    from {
-        transform: translate(0,0) scale(1);
-    }
-    to {
-        transform: translate(180px,80px) scale(1.25);
-    }
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    opacity:.12;
+    background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent);
 }
 
 /* NAVBAR */
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 18px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(5,7,13,.88);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(0,180,255,.2);
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    height:75px;
+    padding:0 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(3,6,12,.88);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(0,174,255,.18);
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 1px;
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
-.logo span {
-    color: #00aaff;
+.logo span{
+    color:#00b7ff;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:28px;
 }
 
-nav a {
-    color: #ddd;
-    text-decoration: none;
-    font-size: 14px;
-    transition: .3s;
+nav a{
+    color:#aeb8c7;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    transition:.25s;
 }
 
-nav a:hover {
-    color: #00b7ff;
+nav a:hover{
+    color:#00c8ff;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.nav-btn{
+    padding:10px 16px;
+    border-radius:9px;
+    border:1px solid #26384e;
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.nav-btn.register{
+    background:linear-gradient(135deg,#007cff,#00c8ff);
+    border:0;
 }
 
 /* HERO */
-.hero {
-    min-height: 520px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 20px;
-    position: relative;
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:90px 20px;
+    position:relative;
 }
 
-.hero-content {
-    max-width: 900px;
+.hero-content{
+    max-width:950px;
 }
 
-.badge {
-    display: inline-block;
-    padding: 9px 18px;
-    border: 1px solid rgba(0,190,255,.4);
-    background: rgba(0,150,255,.08);
-    border-radius: 50px;
-    color: #00c8ff;
-    font-size: 13px;
-    margin-bottom: 25px;
-    animation: pulse 2s infinite;
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border:1px solid rgba(0,190,255,.35);
+    background:rgba(0,150,255,.08);
+    border-radius:50px;
+    color:#00c8ff;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:25px;
 }
 
-@keyframes pulse {
-    50% {
-        box-shadow: 0 0 25px rgba(0,180,255,.25);
-    }
+.hero h1{
+    font-size:clamp(45px,7vw,82px);
+    line-height:.98;
+    font-weight:900;
+    margin-bottom:25px;
 }
 
-.hero h1 {
-    font-size: clamp(40px, 7vw, 76px);
-    line-height: 1;
-    margin-bottom: 22px;
-    font-weight: 900;
+.hero h1 span{
+    color:#00baff;
+    text-shadow:0 0 35px rgba(0,180,255,.35);
 }
 
-.hero h1 span {
-    color: #00b7ff;
-    text-shadow: 0 0 30px rgba(0,183,255,.35);
+.hero p{
+    max-width:700px;
+    margin:auto;
+    color:#9ba9bb;
+    font-size:18px;
+    line-height:1.7;
 }
 
-.hero p {
-    color: #aeb8c7;
-    font-size: 18px;
-    line-height: 1.7;
-    max-width: 700px;
-    margin: auto;
+.search{
+    max-width:700px;
+    margin:35px auto 0;
+    display:flex;
+    background:#0b111b;
+    border:1px solid #24364c;
+    border-radius:14px;
+    padding:7px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
 }
 
-.hero-buttons {
-    margin-top: 35px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+.search input{
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:#fff;
+    padding:14px;
+    font-size:15px;
 }
 
-.btn {
-    padding: 14px 25px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: .3s;
-    display: inline-block;
+.search button{
+    border:0;
+    border-radius:9px;
+    padding:0 24px;
+    background:linear-gradient(135deg,#007cff,#00c8ff);
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.btn-primary {
-    background: linear-gradient(135deg,#008cff,#00c8ff);
-    color: #fff;
-    box-shadow: 0 0 25px rgba(0,160,255,.2);
+/* BUTTON */
+.btn{
+    display:inline-block;
+    padding:14px 23px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.25s;
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 35px rgba(0,180,255,.45);
+.btn-primary{
+    background:linear-gradient(135deg,#007cff,#00c8ff);
+    color:#fff;
 }
 
-.btn-secondary {
-    border: 1px solid #25364b;
-    color: #ddd;
-    background: rgba(255,255,255,.03);
+.btn-secondary{
+    background:#0c131f;
+    border:1px solid #26384e;
+    color:#ddd;
 }
 
-.btn-secondary:hover {
-    border-color: #00aaff;
-    color: #00c8ff;
+.btn:hover{
+    transform:translateY(-3px);
 }
 
-/* Kayan yazılar */
-.marquee {
-    overflow: hidden;
-    white-space: nowrap;
-    border-top: 1px solid rgba(255,255,255,.06);
-    border-bottom: 1px solid rgba(255,255,255,.06);
-    background: rgba(255,255,255,.02);
-    padding: 13px 0;
+/* SECTIONS */
+section{
+    padding:80px 7%;
 }
 
-.marquee div {
-    display: inline-block;
-    animation: marquee 25s linear infinite;
-    color: #8492a6;
-    font-size: 14px;
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
 }
 
-.marquee span {
-    margin: 0 30px;
-    color: #00b7ff;
+.section-title h2{
+    font-size:34px;
+    margin-bottom:10px;
 }
 
-@keyframes marquee {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
-    }
+.section-title p{
+    color:#7f8da0;
 }
 
-/* SECTION */
-section {
-    padding: 85px 7%;
+/* CATEGORIES */
+.categories{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:15px;
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
+.category{
+    padding:25px 10px;
+    text-align:center;
+    background:linear-gradient(145deg,#0e1724,#080c13);
+    border:1px solid #1c2d41;
+    border-radius:16px;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.section-title h2 {
-    font-size: 36px;
-    margin-bottom: 12px;
+.category:hover{
+    transform:translateY(-7px);
+    border-color:#00aaff;
+    box-shadow:0 15px 35px rgba(0,160,255,.12);
 }
 
-.section-title p {
-    color: #8996a8;
+.category .icon{
+    font-size:35px;
+    margin-bottom:12px;
 }
 
-/* INFO CARDS */
-.info-grid {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
+.category h3{
+    font-size:14px;
 }
 
-.info-card {
-    padding: 30px;
-    background: linear-gradient(145deg,rgba(15,23,36,.95),rgba(7,11,19,.95));
-    border: 1px solid #18283b;
-    border-radius: 18px;
-    transition: .3s;
+/* LISTINGS */
+.listings{
+    max-width:1250px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
 }
 
-.info-card:hover {
-    transform: translateY(-7px);
-    border-color: #00aaff;
-    box-shadow: 0 15px 40px rgba(0,150,255,.1);
+.card{
+    overflow:hidden;
+    background:linear-gradient(145deg,#101925,#070b12);
+    border:1px solid #1d3045;
+    border-radius:18px;
+    transition:.3s;
 }
 
-.info-icon {
-    font-size: 35px;
-    margin-bottom: 15px;
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#00aaff;
 }
 
-.info-card h3 {
-    margin-bottom: 10px;
+.card-image{
+    height:175px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:55px;
+    background:
+        radial-gradient(circle at center,rgba(0,170,255,.25),transparent 50%),
+        linear-gradient(135deg,#101c31,#080b12);
+    border-bottom:1px solid #1b2c40;
 }
 
-.info-card p {
-    color: #8795a8;
-    line-height: 1.6;
+.card-content{
+    padding:20px;
 }
 
-/* PACKAGES */
-.package-grid {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 20px;
+.game{
+    color:#00baff;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
-.package {
-    position: relative;
-    background: linear-gradient(145deg,#101925,#080c13);
-    border: 1px solid #1c3045;
-    border-radius: 20px;
-    padding: 30px 22px;
-    transition: .35s;
-    overflow: hidden;
+.card h3{
+    font-size:17px;
+    margin-bottom:12px;
 }
 
-.package::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg,transparent,#00c8ff,transparent);
-    animation: scan 4s infinite;
+.card-info{
+    color:#8492a5;
+    font-size:13px;
+    line-height:1.7;
 }
 
-@keyframes scan {
-    0% { left:-100%; }
-    50%,100% { left:100%; }
+.card-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:18px;
 }
 
-.package:hover {
-    transform: translateY(-10px);
-    border-color: #00aaff;
-    box-shadow: 0 20px 50px rgba(0,150,255,.14);
+.price{
+    color:#00d5ff;
+    font-size:22px;
+    font-weight:900;
 }
 
-.package .icon {
-    font-size: 35px;
-    margin-bottom: 15px;
+.seller{
+    color:#8c9aad;
+    font-size:12px;
 }
 
-.package h3 {
-    font-size: 22px;
-    margin-bottom: 8px;
+/* WHY */
+.features{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.package .price {
-    font-size: 31px;
-    font-weight: 900;
-    color: #00baff;
-    margin: 18px 0;
+.feature{
+    padding:30px;
+    background:rgba(10,17,28,.85);
+    border:1px solid #1a2c40;
+    border-radius:18px;
 }
 
-.package ul {
-    list-style: none;
-    margin-bottom: 25px;
+.feature-icon{
+    font-size:35px;
+    margin-bottom:15px;
 }
 
-.package li {
-    color: #9aa7b7;
-    padding: 7px 0;
-    font-size: 14px;
+.feature h3{
+    margin-bottom:10px;
 }
 
-.package li::before {
-    content: "✓";
-    color: #00d084;
-    margin-right: 8px;
+.feature p{
+    color:#8492a5;
+    line-height:1.7;
+    font-size:14px;
 }
 
-.buy {
-    width: 100%;
-    text-align: center;
+/* CTA */
+.cta{
+    max-width:1000px;
+    margin:auto;
+    padding:55px 30px;
+    text-align:center;
+    border-radius:25px;
+    background:
+        radial-gradient(circle at center,rgba(0,150,255,.18),transparent 55%),
+        #0b121d;
+    border:1px solid #203950;
 }
 
-/* ÖNE ÇIKAN */
-.featured {
-    border-color: #00b7ff;
-    box-shadow: 0 0 35px rgba(0,180,255,.1);
+.cta h2{
+    font-size:34px;
+    margin-bottom:15px;
 }
 
-.featured-label {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 11px;
-    padding: 6px 10px;
-    border-radius: 20px;
-    background: #00aaff;
-    color: white;
-    font-weight: bold;
-}
-
-/* YATQA */
-.yatqa-grid {
-    max-width: 1000px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
-}
-
-/* DNS */
-.dns-box {
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
-    padding: 45px;
-    border-radius: 25px;
-    background: linear-gradient(145deg,#0e1825,#070b12);
-    border: 1px solid #1d3850;
-    box-shadow: 0 20px 60px rgba(0,0,0,.3);
-}
-
-.dns {
-    display: inline-block;
-    margin: 25px 0;
-    padding: 17px 35px;
-    border-radius: 12px;
-    background: rgba(0,160,255,.08);
-    border: 1px solid rgba(0,180,255,.35);
-    color: #00c8ff;
-    font-size: 25px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-/* CONTACT */
-.contact {
-    max-width: 900px;
-    margin: auto;
-    text-align: center;
-    padding: 50px 25px;
-    border-radius: 25px;
-    background: linear-gradient(145deg,#0d1723,#070a10);
-    border: 1px solid #1b3045;
-}
-
-.online {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    color: #72ffb0;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    background: #00e676;
-    border-radius: 50%;
-    box-shadow: 0 0 15px #00e676;
+.cta p{
+    color:#8997aa;
+    margin-bottom:25px;
 }
 
 /* FOOTER */
-footer {
-    text-align: center;
-    padding: 35px 20px;
-    border-top: 1px solid rgba(255,255,255,.06);
-    color: #697789;
-    font-size: 13px;
+footer{
+    padding:35px 20px;
+    text-align:center;
+    color:#647286;
+    border-top:1px solid rgba(255,255,255,.06);
+    font-size:13px;
 }
 
 /* MOBILE */
-@media(max-width:900px) {
-    .package-grid {
-        grid-template-columns: repeat(2,1fr);
+@media(max-width:1000px){
+    .categories{
+        grid-template-columns:repeat(3,1fr);
     }
 
-    .info-grid {
-        grid-template-columns: 1fr;
+    .listings{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .yatqa-grid {
-        grid-template-columns: 1fr;
-    }
-
-    nav ul {
-        gap: 10px;
+    nav ul{
+        display:none;
     }
 }
 
-@media(max-width:600px) {
-    nav {
-        padding: 15px 5%;
+@media(max-width:600px){
+    nav{
+        padding:0 5%;
     }
 
-    nav ul {
-        display: none;
+    .nav-buttons{
+        display:none;
     }
 
-    section {
-        padding: 65px 5%;
+    .logo{
+        font-size:20px;
     }
 
-    .package-grid {
-        grid-template-columns: 1fr;
+    section{
+        padding:60px 5%;
     }
 
-    .hero {
-        min-height: 500px;
+    .categories{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .hero p {
-        font-size: 16px;
+    .listings{
+        grid-template-columns:1fr;
     }
 
-    .dns {
-        font-size: 19px;
-        padding: 15px 20px;
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .search{
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .search button{
+        height:45px;
     }
 }
 </style>
@@ -506,22 +466,34 @@ footer {
 
 <!-- NAVBAR -->
 <nav>
-   <div class="logo">BAYRAK<span>SUNUCUM</span></div>
+
+    <div class="logo">
+        BAYRAK<span>SUNUCUM</span>
+    </div>
 
     <ul>
         <li><a href="#anasayfa">Ana Sayfa</a></li>
-        <li><a href="#bayilik">Bayilik</a></li>
-        <li><a href="#yatqa">YATQA</a></li>
-        <li><a href="#dns">TS3 DNS</a></li>
-        <li><a href="#destek">Destek</a></li>
+        <li><a href="#oyunlar">Oyunlar</a></li>
+        <li><a href="#ilanlar">İlanlar</a></li>
+        <li><a href="#guven">Güvenlik</a></li>
     </ul>
+
+    <div class="nav-buttons">
+        <a href="#" class="nav-btn">Giriş Yap</a>
+        <a href="#" class="nav-btn register">Kayıt Ol</a>
+    </div>
+
 </nav>
+
 
 <!-- HERO -->
 <section class="hero" id="anasayfa">
+
     <div class="hero-content">
 
-        <div class="badge">🟢 BAYRAKSUNUCUM • OYUN PAZARYERİ</div>
+        <div class="badge">
+            🟢 BAYRAKSUNUCUM • OYUN PAZARYERİ
+        </div>
 
         <h1>
             OYUN HESAPLARI<br>
@@ -529,347 +501,335 @@ footer {
         </h1>
 
         <p>
-            Aradığın oyun hesabını ve dijital ürünü kolayca bul.
-            Güvenilir satıcıların ilanlarını keşfet.
+            Aradığın oyun hesabını, dijital ürünü ve oyun içi
+            ürünleri keşfet. Satıcıların ilanlarını tek platformda incele.
         </p>
 
-        <div class="hero-buttons">
-            <a href="#ilanlar" class="btn btn-primary">
-                🎮 İLANLARI KEŞFET
-            </a>
+        <div class="search">
+            <input
+                type="text"
+                placeholder="🔎 Oyun, hesap veya ürün ara..."
+            >
 
-            <a href="#oyunlar" class="btn btn-secondary">
-                🕹️ OYUNLARA GÖZ AT
-            </a>
+            <button>
+                ARA
+            </button>
         </div>
 
     </div>
+
 </section>
 
-        <p>
-            TeamSpeak 3 sunucuları, DNS hizmetleri, bayilik paketleri
-            ve YATQA çözümleri. İhtiyacınıza uygun paketi seçin,
-            WhatsApp üzerinden hızlıca sipariş verin.
-        </p>
 
-        <div class="hero-buttons">
-            <a href="#bayilik" class="btn btn-primary">
-                💎 BAYİLİK PAKETLERİ
-            </a>
+<!-- OYUNLAR -->
+<section id="oyunlar">
 
-            <a href="#yatqa" class="btn btn-secondary">
-                ⚡ YATQA PAKETLERİ
-            </a>
+    <div class="section-title">
+        <h2>🎮 POPÜLER OYUNLAR</h2>
+        <p>Favori oyununu seç ve ilanları keşfet.</p>
+    </div>
+
+    <div class="categories">
+
+        <div class="category">
+            <div class="icon">🐺</div>
+            <h3>Wolfteam</h3>
+        </div>
+
+        <div class="category">
+            <div class="icon">🎯</div>
+            <h3>Valorant</h3>
+        </div>
+
+        <div class="category">
+            <div class="icon">🏰</div>
+            <h3>Clash of Clans</h3>
+        </div>
+
+        <div class="category">
+            <div class="icon">🔫</div>
+            <h3>PUBG</h3>
+        </div>
+
+        <div class="category">
+            <div class="icon">🎮</div>
+            <h3>Steam</h3>
+        </div>
+
+        <div class="category">
+            <div class="icon">➕</div>
+            <h3>Diğer Oyunlar</h3>
         </div>
 
     </div>
+
 </section>
 
-<!-- KAYAN YAZI -->
-<div class="marquee">
-    <div>
-        <span>🎧 TeamSpeak 3</span>
-        Güvenilir TS3 hizmetleri
-        <span>🌐 DNS</span>
-        Kolay bağlantı
-        <span>💎 BAYİLİK</span>
-        Uygun fiyatlı paketler
-        <span>⚡ YATQA</span>
-        Profesyonel çözümler
-        <span>🎮 GAMING</span>
-        Topluluğun için güçlü altyapı
-    </div>
-</div>
 
-<!-- HIZLI BİLGİ -->
+<!-- İLANLAR -->
+<section id="ilanlar">
+
+    <div class="section-title">
+        <h2>🔥 ÖNE ÇIKAN İLANLAR</h2>
+        <p>Platformdaki örnek ilanlar.</p>
+    </div>
+
+    <div class="listings">
+
+        <div class="card">
+
+            <div class="card-image">
+                🐺
+            </div>
+
+            <div class="card-content">
+
+                <div class="game">
+                    WOLFTEAM
+                </div>
+
+                <h3>
+                    Wolfteam Gelişmiş Hesap
+                </h3>
+
+                <div class="card-info">
+                    Yüksek seviye hesap<br>
+                    Detaylı bilgiler ilan içerisinde
+                </div>
+
+                <div class="card-bottom">
+
+                    <div class="price">
+                        150 TL
+                    </div>
+
+                    <div class="seller">
+                        ★ BAYRAKICI
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+                🎯
+            </div>
+
+            <div class="card-content">
+
+                <div class="game">
+                    VALORANT
+                </div>
+
+                <h3>
+                    Valorant Hesap
+                </h3>
+
+                <div class="card-info">
+                    Özel skinler<br>
+                    Hesap detayları ilanda
+                </div>
+
+                <div class="card-bottom">
+
+                    <div class="price">
+                        300 TL
+                    </div>
+
+                    <div class="seller">
+                        ★ GAMERTR
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+                🏰
+            </div>
+
+            <div class="card-content">
+
+                <div class="game">
+                    CLASH OF CLANS
+                </div>
+
+                <h3>
+                    TH Hesabı
+                </h3>
+
+                <div class="card-info">
+                    Gelişmiş köy<br>
+                    Hesap bilgileri ilanda
+                </div>
+
+                <div class="card-bottom">
+
+                    <div class="price">
+                        450 TL
+                    </div>
+
+                    <div class="seller">
+                        ★ OYUNPAZAR
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+                🔫
+            </div>
+
+            <div class="card-content">
+
+                <div class="game">
+                    PUBG
+                </div>
+
+                <h3>
+                    PUBG Hesabı
+                </h3>
+
+                <div class="card-info">
+                    Özel içerikler<br>
+                    Hesap detayları ilanda
+                </div>
+
+                <div class="card-bottom">
+
+                    <div class="price">
+                        250 TL
+                    </div>
+
+                    <div class="seller">
+                        ★ DARKSTORE
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GÜVEN -->
+<section id="guven">
+
+    <div class="section-title">
+        <h2>🛡️ BAYRAKSUNUCUM</h2>
+        <p>Oyun toplulukları için modern dijital pazaryeri.</p>
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔐
+            </div>
+
+            <h3>
+                Güvenli Alışveriş
+            </h3>
+
+            <p>
+                Satıcı ve ilan bilgilerinin düzenli şekilde
+                sunulabileceği güvenli bir platform altyapısı.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                👤
+            </div>
+
+            <h3>
+                Satıcı Profilleri
+            </h3>
+
+            <p>
+                Her satıcının kendi profili, ilanları ve
+                değerlendirmeleri bulunabilecek.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Hızlı İlan Sistemi
+            </h3>
+
+            <p>
+                Kullanıcılar ilerleyen aşamada kendi ilanlarını
+                oluşturup platformda yayınlayabilecek.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SATIŞ CTA -->
 <section>
-    <div class="section-title">
-        <h2>🚀 Neler Sunuyoruz?</h2>
-        <p>Sunucunuzu büyütmeniz için ihtiyacınız olan hizmetler</p>
-    </div>
 
-    <div class="info-grid">
+    <div class="cta">
 
-        <div class="info-card">
-            <div class="info-icon">🎧</div>
-            <h3>TeamSpeak 3</h3>
-            <p>
-                Gaming topluluklarınız ve klanlarınız için
-                TeamSpeak 3 sunucu hizmetleri.
-            </p>
-        </div>
-
-        <div class="info-card">
-            <div class="info-icon">🌐</div>
-            <h3>Özel DNS</h3>
-            <p>
-                Sunucunuza kolay hatırlanabilir TeamSpeak DNS
-                adresi sağlayın.
-            </p>
-        </div>
-
-        <div class="info-card">
-            <div class="info-icon">💎</div>
-            <h3>Bayilik</h3>
-            <p>
-                Kendi müşterilerinize satış yapabileceğiniz
-                bayilik paketlerinden yararlanın.
-            </p>
-        </div>
-
-    </div>
-</section>
-
-<!-- BAYİLİK -->
-<section id="bayilik">
-
-    <div class="section-title">
-        <h2>💎 BAYİLİK PAKETLERİ</h2>
-        <p>İhtiyacınıza uygun bayilik paketini seçin</p>
-    </div>
-
-    <div class="package-grid">
-
-        <div class="package">
-            <div class="icon">🟢</div>
-            <h3>1 GB Bayilik</h3>
-
-            <div class="price">250 TL</div>
-
-            <ul>
-                <li>Bayi hesabı</li>
-                <li>TS3 hizmetleri</li>
-                <li>Müşteri yönetimi</li>
-                <li>Destek</li>
-            </ul>
-
-            <a class="btn btn-primary buy"
-               href="https://wa.me/905305942151?text=Merhaba%20Emre%20Sunucu%20Hizmetleri%2C%201%20GB%20Bayilik%20sat%C4%B1n%20almak%20istiyorum.%20Fiyat%3A%20250%20TL"
-               target="_blank">
-               🛒 SATIN AL
-            </a>
-        </div>
-
-
-        <div class="package featured">
-
-            <div class="featured-label">POPÜLER</div>
-
-            <div class="icon">🔵</div>
-            <h3>2 GB Bayilik</h3>
-
-            <div class="price">500 TL</div>
-
-            <ul>
-                <li>Bayi hesabı</li>
-                <li>TS3 hizmetleri</li>
-                <li>Müşteri yönetimi</li>
-                <li>Destek</li>
-            </ul>
-
-            <a class="btn btn-primary buy"
-               href="https://wa.me/905305942151?text=Merhaba%20Emre%20Sunucu%20Hizmetleri%2C%202%20GB%20Bayilik%20sat%C4%B1n%20almak%20istiyorum.%20Fiyat%3A%20500%20TL"
-               target="_blank">
-               🛒 SATIN AL
-            </a>
-        </div>
-
-
-        <div class="package">
-
-            <div class="icon">🟣</div>
-            <h3>3 GB Bayilik</h3>
-
-            <div class="price">750 TL</div>
-
-            <ul>
-                <li>Bayi hesabı</li>
-                <li>TS3 hizmetleri</li>
-                <li>Müşteri yönetimi</li>
-                <li>Destek</li>
-            </ul>
-
-            <a class="btn btn-primary buy"
-               href="https://wa.me/905305942151?text=Merhaba%20Emre%20Sunucu%20Hizmetleri%2C%203%20GB%20Bayilik%20sat%C4%B1n%20almak%20istiyorum.%20Fiyat%3A%20750%20TL"
-               target="_blank">
-               🛒 SATIN AL
-            </a>
-        </div>
-
-
-        <div class="package">
-
-            <div class="icon">🔴</div>
-            <h3>4 GB Bayilik</h3>
-
-            <div class="price">1.000 TL</div>
-
-            <ul>
-                <li>Bayi hesabı</li>
-                <li>TS3 hizmetleri</li>
-                <li>Müşteri yönetimi</li>
-                <li>Destek</li>
-            </ul>
-
-            <a class="btn btn-primary buy"
-               href="https://wa.me/905305942151?text=Merhaba%20Emre%20Sunucu%20Hizmetleri%2C%204%20GB%20Bayilik%20sat%C4%B1n%20almak%20istiyorum.%20Fiyat%3A%201000%20TL"
-               target="_blank">
-               🛒 SATIN AL
-            </a>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- YATQA -->
-<section id="yatqa">
-
-    <div class="section-title">
-        <h2>⚡ YATQA SATIŞ</h2>
-        <p>Sunucu yönetimi için YATQA paketleri</p>
-    </div>
-
-    <div class="yatqa-grid">
-
-        <div class="package">
-
-            <div class="icon">🟢</div>
-            <h3>YATQA Başlangıç</h3>
-
-            <div class="price">600 TL</div>
-
-            <ul>
-                <li>9 Server</li>
-                <li>YATQA erişimi</li>
-                <li>Sunucu yönetimi</li>
-                <li>Destek</li>
-            </ul>
-
-            <a class="btn btn-primary buy"
-               href="https://wa.me/905305942151?text=Merhaba%20Emre%20Sunucu%20Hizmetleri%2C%20YATQA%20sat%C4%B1n%20almak%20istiyorum.%20Paket%3A%209%20Server.%20Fiyat%3A%20600%20TL"
-               target="_blank">
-               🛒 SATIN AL
-            </a>
-
-        </div>
-
-
-        <div class="package featured">
-
-            <div class="featured-label">TERCİH EDİLEN</div>
-
-            <div class="icon">🔵</div>
-            <h3>YATQA Plus</h3>
-
-            <div class="price">1.000 TL</div>
-
-            <ul>
-                <li>14 Server</li>
-                <li>YATQA erişimi</li>
-                <li>Sunucu yönetimi</li>
-                <li>Destek</li>
-            </ul>
-
-            <a class="btn btn-primary buy"
-               href="https://wa.me/905305942151?text=Merhaba%20Emre%20Sunucu%20Hizmetleri%2C%20YATQA%20sat%C4%B1n%20almak%20istiyorum.%20Paket%3A%2014%20Server.%20Fiyat%3A%201000%20TL"
-               target="_blank">
-               🛒 SATIN AL
-            </a>
-
-        </div>
-
-
-        <div class="package">
-
-            <div class="icon">👑</div>
-            <h3>YATQA Pro</h3>
-
-            <div class="price">1.899 TL</div>
-
-            <ul>
-                <li>27 Server</li>
-                <li>YATQA erişimi</li>
-                <li>Sunucu yönetimi</li>
-                <li>Destek</li>
-            </ul>
-
-            <a class="btn btn-primary buy"
-               href="https://wa.me/905305942151?text=Merhaba%20Emre%20Sunucu%20Hizmetleri%2C%20YATQA%20sat%C4%B1n%20almak%20istiyorum.%20Paket%3A%2027%20Server.%20Fiyat%3A%201899%20TL"
-               target="_blank">
-               🛒 SATIN AL
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- DNS -->
-<section id="dns">
-
-    <div class="section-title">
-        <h2>🌐 TS3 DNS / SUNUCU BİLGİLERİ</h2>
-        <p>TeamSpeak 3 sunucumuza kolayca bağlanın</p>
-    </div>
-
-    <div class="dns-box">
-
-        <div class="info-icon">🎧</div>
-
-        <h2>TS3 DNS</h2>
-
-        <div class="dns">
-            prosuncum
-        </div>
-
-        <p style="color:#8996a8;margin-bottom:25px;">
-            TeamSpeak 3 istemciniz üzerinden bu adresi kullanarak
-            sunucuya bağlanabilirsiniz.
-        </p>
-
-        <a href="ts3server://prosuncum"
-           class="btn btn-primary">
-           🎧 TS3 SUNUCUSUNA BAĞLAN
-        </a>
-
-    </div>
-
-</section>
-
-<!-- DESTEK -->
-<section id="destek">
-
-    <div class="contact">
-
-        <div class="online">
-            <span class="dot"></span>
-            EMRE ONLINE • DESTEK AÇIK
-        </div>
-
-        <h2 style="font-size:32px;margin-bottom:15px;">
-            💬 Bir sorunuz mu var?
+        <h2>
+            🎮 Sen de satış yap!
         </h2>
 
-        <p style="color:#8996a8;line-height:1.7;margin-bottom:30px;">
-            Bayilik, YATQA, TS3 veya DNS hizmetleri hakkında
-            bilgi almak için WhatsApp üzerinden bize ulaşabilirsiniz.
+        <p>
+            Hesabını oluştur, kendi oyun hesaplarını ve
+            dijital ürünlerini platformda listele.
         </p>
 
-        <a href="https://wa.me/905305942151?text=Merhaba%20Emre%20Sunucu%20Hizmetleri%2C%20bilgi%20almak%20istiyorum."
-           target="_blank"
-           class="btn btn-primary">
-           💬 WHATSAPP'TAN ULAŞ
+        <a href="#" class="btn btn-primary">
+            🚀 ÜCRETSİZ KAYIT OL
         </a>
 
     </div>
 
 </section>
 
-<!-- FOOTER -->
+
 <footer>
-    © 2026 EMRE Sunucu Hizmetleri • TeamSpeak 3 • DNS • Bayilik • YATQA
+
+    © 2026 BAYRAKSUNUCUM
+    • Oyun Hesapları
+    • Dijital Ürünler
+    • Oyun Pazaryeri
+
 </footer>
 
 </body>
