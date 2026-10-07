@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BAYRAKSUNUCUM | Oyun Hesapları ve Dijital Ürünler</title>
+<title>BAYRAKSUNUCUM | Dijital Oyun Pazaryeri</title>
 
 <style>
 *{
@@ -18,23 +18,26 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#05070d;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#070912;
     color:#fff;
     overflow-x:hidden;
 }
 
-/* GAMING ARKA PLAN */
+/* =========================
+   ARKA PLAN
+========================= */
+
 body::before{
     content:"";
     position:fixed;
     inset:0;
     z-index:-3;
     background:
-        radial-gradient(circle at 20% 20%,rgba(0,140,255,.20),transparent 28%),
-        radial-gradient(circle at 80% 30%,rgba(120,0,255,.16),transparent 28%),
-        radial-gradient(circle at 50% 100%,rgba(0,255,170,.08),transparent 30%),
-        linear-gradient(135deg,#03050a,#08101c 50%,#04060c);
+        radial-gradient(circle at 15% 20%, rgba(0,110,255,.18), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(125,50,255,.15), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(0,200,255,.08), transparent 30%),
+        #070912;
 }
 
 body::after{
@@ -42,55 +45,72 @@ body::after{
     position:fixed;
     inset:0;
     z-index:-2;
-    opacity:.12;
+    opacity:.18;
     background-image:
-        linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
-    background-size:55px 55px;
-    mask-image:linear-gradient(to bottom,black,transparent);
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:50px 50px;
+    pointer-events:none;
 }
 
-/* NAVBAR */
-nav{
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
     position:sticky;
     top:0;
     z-index:1000;
-    height:75px;
-    padding:0 7%;
+    height:76px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    background:rgba(7,9,18,.82);
+    backdrop-filter:blur(18px);
+}
+
+.nav-inner{
+    width:min(1200px,92%);
+    height:100%;
+    margin:auto;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    background:rgba(3,6,12,.88);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(0,174,255,.18);
 }
 
 .logo{
-    font-size:24px;
+    font-size:25px;
     font-weight:900;
-    letter-spacing:1px;
+    letter-spacing:-1px;
+    color:#fff;
 }
 
 .logo span{
-    color:#00b7ff;
+    color:#328cff;
 }
 
-nav ul{
-    list-style:none;
+.logo small{
+    display:block;
+    font-size:8px;
+    letter-spacing:3px;
+    color:#71809d;
+    margin-top:2px;
+}
+
+.nav-links{
     display:flex;
-    gap:28px;
+    gap:30px;
+    list-style:none;
 }
 
-nav a{
-    color:#aeb8c7;
+.nav-links a{
+    color:#9ca7bd;
     text-decoration:none;
     font-size:14px;
-    font-weight:bold;
+    font-weight:600;
     transition:.25s;
 }
 
-nav a:hover{
-    color:#00c8ff;
+.nav-links a:hover{
+    color:#fff;
 }
 
 .nav-buttons{
@@ -98,347 +118,628 @@ nav a:hover{
     gap:10px;
 }
 
-.nav-btn{
-    padding:10px 16px;
-    border-radius:9px;
-    border:1px solid #26384e;
-    color:#fff;
+.btn-login,
+.btn-register{
+    padding:11px 18px;
+    border-radius:10px;
     text-decoration:none;
     font-size:13px;
-    font-weight:bold;
+    font-weight:700;
 }
 
-.nav-btn.register{
-    background:linear-gradient(135deg,#007cff,#00c8ff);
-    border:0;
+.btn-login{
+    color:#fff;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04);
 }
 
-/* HERO */
+.btn-register{
+    color:#fff;
+    background:linear-gradient(135deg,#176cff,#604cff);
+    box-shadow:0 0 25px rgba(50,110,255,.25);
+}
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
-    min-height:650px;
-    display:flex;
+    width:min(1200px,92%);
+    margin:auto;
+    min-height:590px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
     align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:90px 20px;
+    gap:50px;
+    padding:70px 0;
+}
+
+.hero-left{
     position:relative;
 }
 
-.hero-content{
-    max-width:950px;
-}
-
-.badge{
-    display:inline-block;
-    padding:10px 18px;
-    border:1px solid rgba(0,190,255,.35);
-    background:rgba(0,150,255,.08);
-    border-radius:50px;
-    color:#00c8ff;
-    font-size:13px;
-    font-weight:bold;
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 13px;
+    border:1px solid rgba(71,139,255,.25);
+    background:rgba(36,104,255,.08);
+    color:#65a5ff;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:700;
     margin-bottom:25px;
 }
 
+.status-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#35e88b;
+    box-shadow:0 0 12px #35e88b;
+}
+
 .hero h1{
-    font-size:clamp(45px,7vw,82px);
+    font-size:clamp(42px,5.5vw,76px);
     line-height:.98;
-    font-weight:900;
+    letter-spacing:-4px;
     margin-bottom:25px;
 }
 
 .hero h1 span{
-    color:#00baff;
-    text-shadow:0 0 35px rgba(0,180,255,.35);
+    color:#428dff;
 }
 
-.hero p{
-    max-width:700px;
-    margin:auto;
-    color:#9ba9bb;
-    font-size:18px;
-    line-height:1.7;
+.hero-text{
+    max-width:570px;
+    color:#8e9ab1;
+    font-size:16px;
+    line-height:1.8;
+    margin-bottom:32px;
 }
 
 .search{
-    max-width:700px;
-    margin:35px auto 0;
+    max-width:600px;
+    height:62px;
     display:flex;
-    background:#0b111b;
-    border:1px solid #24364c;
-    border-radius:14px;
+    align-items:center;
     padding:7px;
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:15px;
+    box-shadow:0 15px 50px rgba(0,0,0,.25);
+}
+
+.search-icon{
+    width:45px;
+    text-align:center;
+    font-size:20px;
+    color:#63718d;
 }
 
 .search input{
     flex:1;
+    height:100%;
     border:0;
     outline:0;
     background:transparent;
     color:#fff;
-    padding:14px;
-    font-size:15px;
-}
-
-.search button{
-    border:0;
-    border-radius:9px;
-    padding:0 24px;
-    background:linear-gradient(135deg,#007cff,#00c8ff);
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* BUTTON */
-.btn{
-    display:inline-block;
-    padding:14px 23px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-    transition:.25s;
-}
-
-.btn-primary{
-    background:linear-gradient(135deg,#007cff,#00c8ff);
-    color:#fff;
-}
-
-.btn-secondary{
-    background:#0c131f;
-    border:1px solid #26384e;
-    color:#ddd;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-/* SECTIONS */
-section{
-    padding:80px 7%;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:45px;
-}
-
-.section-title h2{
-    font-size:34px;
-    margin-bottom:10px;
-}
-
-.section-title p{
-    color:#7f8da0;
-}
-
-/* CATEGORIES */
-.categories{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:15px;
-}
-
-.category{
-    padding:25px 10px;
-    text-align:center;
-    background:linear-gradient(145deg,#0e1724,#080c13);
-    border:1px solid #1c2d41;
-    border-radius:16px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.category:hover{
-    transform:translateY(-7px);
-    border-color:#00aaff;
-    box-shadow:0 15px 35px rgba(0,160,255,.12);
-}
-
-.category .icon{
-    font-size:35px;
-    margin-bottom:12px;
-}
-
-.category h3{
     font-size:14px;
 }
 
-/* LISTINGS */
-.listings{
-    max-width:1250px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
+.search input::placeholder{
+    color:#657189;
 }
 
-.card{
-    overflow:hidden;
-    background:linear-gradient(145deg,#101925,#070b12);
-    border:1px solid #1d3045;
-    border-radius:18px;
-    transition:.3s;
+.search button{
+    height:48px;
+    padding:0 24px;
+    border:0;
+    border-radius:10px;
+    background:#287cff;
+    color:#fff;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    border-color:#00aaff;
+.hero-stats{
+    display:flex;
+    gap:35px;
+    margin-top:35px;
+}
+
+.stat strong{
+    display:block;
+    font-size:20px;
+}
+
+.stat span{
+    display:block;
+    color:#65718a;
+    font-size:11px;
+    margin-top:5px;
+}
+
+/* =========================
+   HERO VISUAL
+========================= */
+
+.hero-right{
+    position:relative;
+    height:430px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.glow{
+    position:absolute;
+    width:330px;
+    height:330px;
+    background:#216cff;
+    filter:blur(100px);
+    opacity:.16;
+}
+
+.market-card{
+    position:relative;
+    width:390px;
+    border:1px solid rgba(255,255,255,.1);
+    background:linear-gradient(
+        145deg,
+        rgba(25,31,51,.95),
+        rgba(10,13,25,.96)
+    );
+    border-radius:25px;
+    padding:20px;
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.5),
+        0 0 80px rgba(37,105,255,.12);
+    transform:rotate(2deg);
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.live{
+    color:#3ce890;
+    font-size:10px;
+    font-weight:800;
 }
 
 .card-image{
-    height:175px;
+    height:170px;
+    border-radius:16px;
+    background:
+        radial-gradient(circle at 30% 35%,rgba(70,145,255,.65),transparent 25%),
+        radial-gradient(circle at 75% 65%,rgba(117,58,255,.5),transparent 30%),
+        linear-gradient(135deg,#111a34,#080b16);
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:55px;
-    background:
-        radial-gradient(circle at center,rgba(0,170,255,.25),transparent 50%),
-        linear-gradient(135deg,#101c31,#080b12);
-    border-bottom:1px solid #1b2c40;
+    font-size:58px;
+    margin-bottom:18px;
+    border:1px solid rgba(255,255,255,.06);
 }
 
-.card-content{
-    padding:20px;
-}
-
-.game{
-    color:#00baff;
-    font-size:12px;
-    font-weight:bold;
+.card-game{
+    color:#7f8ba4;
+    font-size:11px;
     margin-bottom:8px;
 }
 
-.card h3{
-    font-size:17px;
-    margin-bottom:12px;
-}
-
-.card-info{
-    color:#8492a5;
-    font-size:13px;
-    line-height:1.7;
+.card-title{
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:15px;
 }
 
 .card-bottom{
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    margin-top:18px;
+    align-items:end;
 }
 
-.price{
-    color:#00d5ff;
-    font-size:22px;
-    font-weight:900;
+.price small{
+    display:block;
+    color:#68758f;
+    font-size:10px;
+    margin-bottom:4px;
 }
 
-.seller{
-    color:#8c9aad;
-    font-size:12px;
+.price strong{
+    color:#4b9aff;
+    font-size:25px;
 }
 
-/* WHY */
-.features{
-    max-width:1100px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+.buy{
+    border:0;
+    background:#fff;
+    color:#080b14;
+    padding:11px 18px;
+    border-radius:10px;
+    font-weight:800;
 }
 
-.feature{
-    padding:30px;
-    background:rgba(10,17,28,.85);
-    border:1px solid #1a2c40;
-    border-radius:18px;
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    width:min(1200px,92%);
+    margin:0 auto 100px;
 }
 
-.feature-icon{
-    font-size:35px;
-    margin-bottom:15px;
-}
-
-.feature h3{
-    margin-bottom:10px;
-}
-
-.feature p{
-    color:#8492a5;
-    line-height:1.7;
-    font-size:14px;
-}
-
-/* CTA */
-.cta{
-    max-width:1000px;
-    margin:auto;
-    padding:55px 30px;
-    text-align:center;
-    border-radius:25px;
-    background:
-        radial-gradient(circle at center,rgba(0,150,255,.18),transparent 55%),
-        #0b121d;
-    border:1px solid #203950;
-}
-
-.cta h2{
-    font-size:34px;
-    margin-bottom:15px;
-}
-
-.cta p{
-    color:#8997aa;
+.section-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
     margin-bottom:25px;
 }
 
-/* FOOTER */
-footer{
-    padding:35px 20px;
-    text-align:center;
-    color:#647286;
-    border-top:1px solid rgba(255,255,255,.06);
-    font-size:13px;
+.section-title{
+    font-size:27px;
+    font-weight:800;
 }
 
-/* MOBILE */
-@media(max-width:1000px){
-    .categories{
+.section-sub{
+    color:#69758c;
+    font-size:13px;
+    margin-top:7px;
+}
+
+.view-all{
+    color:#4c96ff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
+}
+
+/* =========================
+   OYUNLAR
+========================= */
+
+.games{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:13px;
+}
+
+.game{
+    position:relative;
+    overflow:hidden;
+    min-height:135px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:17px;
+    background:rgba(255,255,255,.035);
+    padding:20px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.game:hover{
+    transform:translateY(-5px);
+    border-color:rgba(63,140,255,.35);
+    background:rgba(50,110,255,.07);
+}
+
+.game-icon{
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.game-name{
+    font-weight:800;
+    font-size:14px;
+}
+
+.game-count{
+    color:#657189;
+    font-size:10px;
+    margin-top:5px;
+}
+
+/* =========================
+   İLANLAR
+========================= */
+
+.listings{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.listing{
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:18px;
+    background:rgba(13,17,29,.9);
+    transition:.3s;
+}
+
+.listing:hover{
+    transform:translateY(-6px);
+    border-color:rgba(65,135,255,.3);
+}
+
+.listing-image{
+    height:145px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:52px;
+    background:
+        radial-gradient(circle at 50% 50%,rgba(52,119,255,.2),transparent 55%),
+        #101526;
+}
+
+.listing-content{
+    padding:17px;
+}
+
+.category{
+    font-size:10px;
+    color:#6383b7;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.listing h3{
+    font-size:14px;
+    line-height:1.4;
+    margin-bottom:15px;
+}
+
+.seller{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#7b879d;
+    font-size:10px;
+    padding-bottom:14px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.avatar{
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#3185ff,#693dff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:10px;
+    font-weight:900;
+}
+
+.listing-footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:14px;
+}
+
+.listing-price{
+    color:#4b9aff;
+    font-size:19px;
+    font-weight:900;
+}
+
+.rating{
+    color:#f5bd45;
+    font-size:11px;
+}
+
+/* =========================
+   GÜVEN
+========================= */
+
+.security{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.security-card{
+    padding:28px;
+    border-radius:18px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.045),
+        rgba(255,255,255,.018)
+    );
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.security-icon{
+    width:45px;
+    height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:rgba(47,126,255,.1);
+    font-size:21px;
+    margin-bottom:20px;
+}
+
+.security-card h3{
+    font-size:16px;
+    margin-bottom:9px;
+}
+
+.security-card p{
+    color:#6f7b91;
+    font-size:12px;
+    line-height:1.7;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    position:relative;
+    overflow:hidden;
+    padding:55px;
+    border-radius:25px;
+    text-align:center;
+    border:1px solid rgba(58,129,255,.18);
+    background:
+        radial-gradient(circle at 50% 0%,rgba(48,120,255,.2),transparent 45%),
+        rgba(17,23,39,.8);
+}
+
+.cta h2{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.cta p{
+    color:#77839a;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.cta a{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:11px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    background:linear-gradient(135deg,#287dff,#6249ff);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid rgba(255,255,255,.07);
+    padding:45px 0;
+    background:#05070d;
+}
+
+.footer-inner{
+    width:min(1200px,92%);
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.footer-text{
+    color:#566178;
+    font-size:11px;
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+}
+
+.footer-links a{
+    color:#68758b;
+    font-size:11px;
+    text-decoration:none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-text{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .search{
+        margin:auto;
+    }
+
+    .hero-stats{
+        justify-content:center;
+    }
+
+    .hero-right{
+        height:380px;
+    }
+
+    .games{
         grid-template-columns:repeat(3,1fr);
     }
 
     .listings{
         grid-template-columns:repeat(2,1fr);
     }
-
-    nav ul{
-        display:none;
-    }
 }
 
 @media(max-width:600px){
-    nav{
-        padding:0 5%;
-    }
 
-    .nav-buttons{
-        display:none;
+    .navbar{
+        height:65px;
     }
 
     .logo{
-        font-size:20px;
+        font-size:19px;
     }
 
-    section{
-        padding:60px 5%;
+    .logo small{
+        display:none;
     }
 
-    .categories{
+    .btn-login{
+        display:none;
+    }
+
+    .hero{
+        padding:45px 0;
+    }
+
+    .hero h1{
+        font-size:43px;
+        letter-spacing:-2px;
+    }
+
+    .hero-text{
+        font-size:14px;
+    }
+
+    .search{
+        height:55px;
+    }
+
+    .search button{
+        padding:0 14px;
+    }
+
+    .hero-right{
+        height:330px;
+    }
+
+    .market-card{
+        width:100%;
+    }
+
+    .games{
         grid-template-columns:repeat(2,1fr);
     }
 
@@ -446,17 +747,25 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .features{
+    .security{
         grid-template-columns:1fr;
     }
 
-    .search{
-        flex-direction:column;
-        gap:8px;
+    .section{
+        margin-bottom:70px;
     }
 
-    .search button{
-        height:45px;
+    .cta{
+        padding:35px 20px;
+    }
+
+    .cta h2{
+        font-size:27px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        gap:20px;
     }
 }
 </style>
@@ -464,373 +773,503 @@ footer{
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+<div class="nav-inner">
 
     <div class="logo">
         BAYRAK<span>SUNUCUM</span>
+        <small>DİJİTAL OYUN PAZARYERİ</small>
     </div>
 
-    <ul>
-        <li><a href="#anasayfa">Ana Sayfa</a></li>
+    <ul class="nav-links">
+        <li><a href="#">Ana Sayfa</a></li>
         <li><a href="#oyunlar">Oyunlar</a></li>
         <li><a href="#ilanlar">İlanlar</a></li>
-        <li><a href="#guven">Güvenlik</a></li>
+        <li><a href="#guven">Güvenli Alışveriş</a></li>
     </ul>
 
     <div class="nav-buttons">
-        <a href="#" class="nav-btn">Giriş Yap</a>
-        <a href="#" class="nav-btn register">Kayıt Ol</a>
+        <a href="#" class="btn-login">Giriş Yap</a>
+        <a href="#" class="btn-register">Kayıt Ol</a>
     </div>
+
+</div>
 
 </nav>
 
 
-<!-- HERO -->
-<section class="hero" id="anasayfa">
+<!-- =========================
+     HERO
+========================= -->
 
-    <div class="hero-content">
+<section class="hero">
 
-        <div class="badge">
-            🟢 BAYRAKSUNUCUM • OYUN PAZARYERİ
+<div class="hero-left">
+
+    <div class="hero-badge">
+        <span class="status-dot"></span>
+        PAZARYERİ AKTİF
+    </div>
+
+    <h1>
+        OYUN DÜNYASININ
+        <span>PAZARYERİ.</span>
+    </h1>
+
+    <p class="hero-text">
+        Oyun hesapları, oyun paraları, itemler ve dijital ürünleri
+        tek bir yerde keşfet. Satın al, sat ve kendi dijital mağazanı oluştur.
+    </p>
+
+    <div class="search">
+
+        <div class="search-icon">⌕</div>
+
+        <input
+            type="text"
+            placeholder="Hesap, item veya oyun ara..."
+        >
+
+        <button>Ara</button>
+
+    </div>
+
+    <div class="hero-stats">
+
+        <div class="stat">
+            <strong>1.2K+</strong>
+            <span>Aktif İlan</span>
         </div>
 
-        <h1>
-            OYUN HESAPLARI<br>
-            <span>VE DİJİTAL ÜRÜNLER</span>
-        </h1>
+        <div class="stat">
+            <strong>850+</strong>
+            <span>Satıcı</span>
+        </div>
 
-        <p>
-            Aradığın oyun hesabını, dijital ürünü ve oyun içi
-            ürünleri keşfet. Satıcıların ilanlarını tek platformda incele.
-        </p>
+        <div class="stat">
+            <strong>25+</strong>
+            <span>Oyun</span>
+        </div>
 
-        <div class="search">
-            <input
-                type="text"
-                placeholder="🔎 Oyun, hesap veya ürün ara..."
-            >
+    </div>
 
-            <button>
-                ARA
+</div>
+
+
+<div class="hero-right">
+
+    <div class="glow"></div>
+
+    <div class="market-card">
+
+        <div class="card-top">
+            <strong>ÖNE ÇIKAN İLAN</strong>
+            <span class="live">● AKTİF</span>
+        </div>
+
+        <div class="card-image">
+            🎮
+        </div>
+
+        <div class="card-game">
+            WOLFTEAM
+        </div>
+
+        <div class="card-title">
+            Güçlü Başlangıç Hesabı
+        </div>
+
+        <div class="card-bottom">
+
+            <div class="price">
+                <small>FİYAT</small>
+                <strong>₺349</strong>
+            </div>
+
+            <button class="buy">
+                İncele
             </button>
+
         </div>
 
     </div>
+
+</div>
 
 </section>
 
 
-<!-- OYUNLAR -->
-<section id="oyunlar">
+<!-- =========================
+     OYUNLAR
+========================= -->
 
-    <div class="section-title">
-        <h2>🎮 POPÜLER OYUNLAR</h2>
-        <p>Favori oyununu seç ve ilanları keşfet.</p>
+<section class="section" id="oyunlar">
+
+<div class="section-head">
+
+    <div>
+        <div class="section-title">Popüler Oyunlar</div>
+        <div class="section-sub">
+            Aradığın oyunu seç ve ilanları keşfet.
+        </div>
     </div>
 
-    <div class="categories">
+    <a href="#" class="view-all">Tümünü Gör →</a>
 
-        <div class="category">
-            <div class="icon">🐺</div>
-            <h3>Wolfteam</h3>
-        </div>
+</div>
 
-        <div class="category">
-            <div class="icon">🎯</div>
-            <h3>Valorant</h3>
-        </div>
 
-        <div class="category">
-            <div class="icon">🏰</div>
-            <h3>Clash of Clans</h3>
-        </div>
+<div class="games">
 
-        <div class="category">
-            <div class="icon">🔫</div>
-            <h3>PUBG</h3>
-        </div>
-
-        <div class="category">
-            <div class="icon">🎮</div>
-            <h3>Steam</h3>
-        </div>
-
-        <div class="category">
-            <div class="icon">➕</div>
-            <h3>Diğer Oyunlar</h3>
-        </div>
-
+    <div class="game">
+        <div class="game-icon">🐺</div>
+        <div class="game-name">Wolfteam</div>
+        <div class="game-count">320+ ilan</div>
     </div>
+
+    <div class="game">
+        <div class="game-icon">💥</div>
+        <div class="game-name">Valorant</div>
+        <div class="game-count">280+ ilan</div>
+    </div>
+
+    <div class="game">
+        <div class="game-icon">⚔️</div>
+        <div class="game-name">Clash of Clans</div>
+        <div class="game-count">190+ ilan</div>
+    </div>
+
+    <div class="game">
+        <div class="game-icon">🔫</div>
+        <div class="game-name">PUBG</div>
+        <div class="game-count">160+ ilan</div>
+    </div>
+
+    <div class="game">
+        <div class="game-icon">🎮</div>
+        <div class="game-name">Steam</div>
+        <div class="game-count">140+ ilan</div>
+    </div>
+
+    <div class="game">
+        <div class="game-icon">➕</div>
+        <div class="game-name">Diğer</div>
+        <div class="game-count">100+ ilan</div>
+    </div>
+
+</div>
 
 </section>
 
 
-<!-- İLANLAR -->
-<section id="ilanlar">
+<!-- =========================
+     İLANLAR
+========================= -->
 
-    <div class="section-title">
-        <h2>🔥 ÖNE ÇIKAN İLANLAR</h2>
-        <p>Platformdaki örnek ilanlar.</p>
+<section class="section" id="ilanlar">
+
+<div class="section-head">
+
+    <div>
+        <div class="section-title">Öne Çıkan İlanlar</div>
+        <div class="section-sub">
+            Satıcılarımız tarafından yayınlanan popüler ürünler.
+        </div>
     </div>
 
-    <div class="listings">
+    <a href="#" class="view-all">Tüm İlanlar →</a>
 
-        <div class="card">
+</div>
 
-            <div class="card-image">
-                🐺
-            </div>
 
-            <div class="card-content">
+<div class="listings">
 
-                <div class="game">
-                    WOLFTEAM
-                </div>
 
-                <h3>
-                    Wolfteam Gelişmiş Hesap
-                </h3>
+    <div class="listing">
 
-                <div class="card-info">
-                    Yüksek seviye hesap<br>
-                    Detaylı bilgiler ilan içerisinde
-                </div>
-
-                <div class="card-bottom">
-
-                    <div class="price">
-                        150 TL
-                    </div>
-
-                    <div class="seller">
-                        ★ BAYRAKICI
-                    </div>
-
-                </div>
-
-            </div>
-
+        <div class="listing-image">
+            🐺
         </div>
 
+        <div class="listing-content">
 
-        <div class="card">
-
-            <div class="card-image">
-                🎯
-            </div>
-
-            <div class="card-content">
-
-                <div class="game">
-                    VALORANT
-                </div>
-
-                <h3>
-                    Valorant Hesap
-                </h3>
-
-                <div class="card-info">
-                    Özel skinler<br>
-                    Hesap detayları ilanda
-                </div>
-
-                <div class="card-bottom">
-
-                    <div class="price">
-                        300 TL
-                    </div>
-
-                    <div class="seller">
-                        ★ GAMERTR
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-image">
-                🏰
-            </div>
-
-            <div class="card-content">
-
-                <div class="game">
-                    CLASH OF CLANS
-                </div>
-
-                <h3>
-                    TH Hesabı
-                </h3>
-
-                <div class="card-info">
-                    Gelişmiş köy<br>
-                    Hesap bilgileri ilanda
-                </div>
-
-                <div class="card-bottom">
-
-                    <div class="price">
-                        450 TL
-                    </div>
-
-                    <div class="seller">
-                        ★ OYUNPAZAR
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-image">
-                🔫
-            </div>
-
-            <div class="card-content">
-
-                <div class="game">
-                    PUBG
-                </div>
-
-                <h3>
-                    PUBG Hesabı
-                </h3>
-
-                <div class="card-info">
-                    Özel içerikler<br>
-                    Hesap detayları ilanda
-                </div>
-
-                <div class="card-bottom">
-
-                    <div class="price">
-                        250 TL
-                    </div>
-
-                    <div class="seller">
-                        ★ DARKSTORE
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- GÜVEN -->
-<section id="guven">
-
-    <div class="section-title">
-        <h2>🛡️ BAYRAKSUNUCUM</h2>
-        <p>Oyun toplulukları için modern dijital pazaryeri.</p>
-    </div>
-
-    <div class="features">
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🔐
+            <div class="category">
+                WOLFTEAM • HESAP
             </div>
 
             <h3>
-                Güvenli Alışveriş
+                Full karakterli Wolfteam hesabı
             </h3>
 
-            <p>
-                Satıcı ve ilan bilgilerinin düzenli şekilde
-                sunulabileceği güvenli bir platform altyapısı.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                👤
+            <div class="seller">
+                <div class="avatar">B</div>
+                Bayrak
             </div>
 
-            <h3>
-                Satıcı Profilleri
-            </h3>
+            <div class="listing-footer">
 
-            <p>
-                Her satıcının kendi profili, ilanları ve
-                değerlendirmeleri bulunabilecek.
-            </p>
+                <div class="listing-price">
+                    ₺250
+                </div>
 
-        </div>
+                <div class="rating">
+                    ★ 4.9
+                </div>
 
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                ⚡
             </div>
-
-            <h3>
-                Hızlı İlan Sistemi
-            </h3>
-
-            <p>
-                Kullanıcılar ilerleyen aşamada kendi ilanlarını
-                oluşturup platformda yayınlayabilecek.
-            </p>
 
         </div>
 
     </div>
 
+
+
+    <div class="listing">
+
+        <div class="listing-image">
+            💥
+        </div>
+
+        <div class="listing-content">
+
+            <div class="category">
+                VALORANT • HESAP
+            </div>
+
+            <h3>
+                Valorant yüksek seviyeli hesap
+            </h3>
+
+            <div class="seller">
+                <div class="avatar">E</div>
+                Emre
+            </div>
+
+            <div class="listing-footer">
+
+                <div class="listing-price">
+                    ₺450
+                </div>
+
+                <div class="rating">
+                    ★ 5.0
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="listing">
+
+        <div class="listing-image">
+            ⚔️
+        </div>
+
+        <div class="listing-content">
+
+            <div class="category">
+                CLASH OF CLANS • HESAP
+            </div>
+
+            <h3>
+                Belediye 13 güçlü başlangıç hesabı
+            </h3>
+
+            <div class="seller">
+                <div class="avatar">K</div>
+                KralOyuncu
+            </div>
+
+            <div class="listing-footer">
+
+                <div class="listing-price">
+                    ₺650
+                </div>
+
+                <div class="rating">
+                    ★ 4.8
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="listing">
+
+        <div class="listing-image">
+            🎮
+        </div>
+
+        <div class="listing-content">
+
+            <div class="category">
+                STEAM • HESAP
+            </div>
+
+            <h3>
+                Oyun yüklü Steam hesabı
+            </h3>
+
+            <div class="seller">
+                <div class="avatar">G</div>
+                GameStore
+            </div>
+
+            <div class="listing-footer">
+
+                <div class="listing-price">
+                    ₺180
+                </div>
+
+                <div class="rating">
+                    ★ 4.9
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
 </section>
 
 
-<!-- SATIŞ CTA -->
-<section>
+<!-- =========================
+     GÜVEN
+========================= -->
 
-    <div class="cta">
+<section class="section" id="guven">
 
-        <h2>
-            🎮 Sen de satış yap!
-        </h2>
+<div class="section-head">
+
+    <div>
+        <div class="section-title">Neden BAYRAKSUNUCUM?</div>
+
+        <div class="section-sub">
+            Güvenli ve düzenli bir dijital alışveriş deneyimi.
+        </div>
+    </div>
+
+</div>
+
+
+<div class="security">
+
+    <div class="security-card">
+
+        <div class="security-icon">
+            🛡️
+        </div>
+
+        <h3>Güvenli Alışveriş</h3>
 
         <p>
-            Hesabını oluştur, kendi oyun hesaplarını ve
-            dijital ürünlerini platformda listele.
+            Kullanıcıların daha güvenli şekilde dijital ürün
+            alıp satabilmesi için tasarlanmış marketplace altyapısı.
         </p>
-
-        <a href="#" class="btn btn-primary">
-            🚀 ÜCRETSİZ KAYIT OL
-        </a>
 
     </div>
 
+
+    <div class="security-card">
+
+        <div class="security-icon">
+            ⚡
+        </div>
+
+        <h3>Hızlı Teslimat</h3>
+
+        <p>
+            Dijital ürünlerin hızlı şekilde teslim edilmesi
+            için sade ve kullanışlı ilan sistemi.
+        </p>
+
+    </div>
+
+
+    <div class="security-card">
+
+        <div class="security-icon">
+            👤
+        </div>
+
+        <h3>Satıcı Profilleri</h3>
+
+        <p>
+            Satıcıların kendi profillerini oluşturabileceği,
+            puan ve ilan bilgilerini gösterebileceği sistem.
+        </p>
+
+    </div>
+
+</div>
+
 </section>
 
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="section">
+
+<div class="cta">
+
+    <h2>Kendi İlanını Yayınla.</h2>
+
+    <p>
+        Ürünlerini milyonlarca oyuncuya ulaştırmak için
+        BAYRAKSUNUCUM'a katıl.
+    </p>
+
+    <a href="#">
+        Ücretsiz Hesap Oluştur
+    </a>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    © 2026 BAYRAKSUNUCUM
-    • Oyun Hesapları
-    • Dijital Ürünler
-    • Oyun Pazaryeri
+<div class="footer-inner">
+
+    <div class="footer-text">
+        © 2026 BAYRAKSUNUCUM — Dijital Oyun Pazaryeri
+    </div>
+
+    <div class="footer-links">
+        <a href="#">Hakkımızda</a>
+        <a href="#">Destek</a>
+        <a href="#">Kurallar</a>
+        <a href="#">Gizlilik</a>
+    </div>
+
+</div>
 
 </footer>
+
 
 </body>
 </html>
